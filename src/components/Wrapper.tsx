@@ -27,5 +27,5 @@ interface WrapperProps {
 }
 
 export default function Wrapper(props: WrapperProps) {
-  return <Wrap>{props.children}</Wrap>;
+  return <Wrap role={"wrapper"}>{props.children}</Wrap>;
 }

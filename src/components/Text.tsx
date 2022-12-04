@@ -14,7 +14,7 @@ const Paragraph = styled.p`
 `;
 
 export default function Text(props: TextProps) {
-  return <Paragraph>{props.text}</Paragraph>;
+  return <Paragraph role="text">{props.text}</Paragraph>;
 }
 
 interface TextProps {

@@ -8,8 +8,8 @@ const Wrapper = styled.div`
 
 export default function Logo() {
   return (
-    <Link to="/" className="link-logo">
-      <Wrapper role="logo">
+    <Link to="/" role="logo">
+      <Wrapper>
         <svg
           width="98"
           height="75"
