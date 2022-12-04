@@ -1,17 +1,8 @@
 import React, { Component } from "react";
-import { Slide, VerticalCarousel } from "../components";
-import content from "./HomeContent.json";
+import { VerticalCarousel } from "../components";
 import { config } from "@react-spring/web";
+import { SlideProp } from "../types/Slide";
 
-interface Slide {
-  key: number;
-  title: string;
-  text1: string;
-  text2: string;
-  label: string;
-  link: string;
-  reverse: boolean;
-}
 
 export default class Home extends Component {
   state = {
@@ -54,7 +45,7 @@ export default class Home extends Component {
   ];
 
   render() {
-    let slides = this.content.map((slide: Slide) => {
+    let slides = this.content.map((slide: SlideProp) => {
       return {
         key: slide.key,
         title: slide.title,
