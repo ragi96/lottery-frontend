@@ -1,7 +1,7 @@
 import React from "react";
-import { Spring, animated } from "@react-spring/web";
+import { Spring, animated } from '@react-spring/web'
 import { Anim, Heading, Text, Button } from "./";
-import { Container, Row, Col, Visible } from "react-grid-system";
+import { Container, Row, Col } from "react-grid-system";
 
 interface SlideProps {
   title: string;
@@ -61,21 +61,12 @@ export default function Slide(props: SlideProps) {
     translateY -= translateYoffset;
   }
 
-  let rowDir = "row";
-  if (reverse) {
-    rowDir = "row-reverse";
-  }
-  let rowProps = {
-    direction: rowDir,
-  };
-
   return (
     <Spring
       to={{
         transform: `translateX(0%) translateY(${translateY}%) scale(${distanceFactor})`,
-        top: `${
-          offsetRadius === 0 ? 50 : 50 + (offsetFromMiddle * 50) / offsetRadius
-        }%`,
+        top: `${offsetRadius === 0 ? 50 : 50 + (offsetFromMiddle * 50) / offsetRadius
+          }%`,
         opacity: distanceFactor === 1 ? 1 : 0,
       }}
       config={animationConfig}
@@ -103,9 +94,7 @@ export default function Slide(props: SlideProps) {
                 <Button to={link} label={label} primary />
               </Col>
               <Col sm={12} md={6}>
-                <Visible md>
-                  <Anim />
-                </Visible>
+                <Anim />
               </Col>
             </Row>
           </Container>

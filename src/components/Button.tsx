@@ -13,7 +13,7 @@ const Btn = styled(Link)`
   &:hover {
     border: solid 1px #fff;
     background-color: ${(props: ButtonStyleProps) =>
-      props.primary ? "#ff0" : "#00ffff"};
+    props.primary ? "#ff0" : "#00ffff"};
     span {
       color: #000;
     }

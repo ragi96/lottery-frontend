@@ -19,7 +19,7 @@ const Wrapper = styled.header`
 
 export default function Header() {
   return (
-    <Wrapper>
+    <Wrapper role="header">
       <Logo />
       <Button primary={true} to="/lottery" label="Go To Lottery" />
     </Wrapper>
