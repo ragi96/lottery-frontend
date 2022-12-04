@@ -1,5 +1,5 @@
 import { Header } from '../components'
 
 export default function Lottery() {
-    return <Header />
+    return <div role={'lottery'}>Lottery</div>
 }
