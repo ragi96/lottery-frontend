@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Slide, Wrapper } from './'
-import PropTypes from 'prop-types'
 
 function mod(a: number, b: number) {
     return ((a % b) + b) % b
