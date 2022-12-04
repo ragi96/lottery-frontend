@@ -113,23 +113,25 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
         const { animationConfig, offsetRadius } = this.props
         return (
             <React.Fragment>
-                <Wrapper>
-                    {this.getPresentableSlides().map((slide, presentableIndex) => (
-                        <Slide
-                            key={slide.key}
-                            title={slide.title}
-                            text1={slide.text1}
-                            text2={slide.text2}
-                            label={slide.label}
-                            link={slide.link}
-                            reverse={slide.reverse}
-                            moveSlide={this.moveSlide}
-                            offsetRadius={this.clampOffsetRadius(offsetRadius)}
-                            index={presentableIndex}
-                            animationConfig={animationConfig}
-                        />
-                    ))}
-                </Wrapper>
+                <div role={'verticalCarousel'}>
+                    <Wrapper>
+                        {this.getPresentableSlides().map((slide, presentableIndex) => (
+                            <Slide
+                                key={slide.key}
+                                title={slide.title}
+                                text1={slide.text1}
+                                text2={slide.text2}
+                                label={slide.label}
+                                link={slide.link}
+                                reverse={slide.reverse}
+                                moveSlide={this.moveSlide}
+                                offsetRadius={this.clampOffsetRadius(offsetRadius)}
+                                index={presentableIndex}
+                                animationConfig={animationConfig}
+                            />
+                        ))}
+                    </Wrapper>
+                </div>
             </React.Fragment>
         )
     }

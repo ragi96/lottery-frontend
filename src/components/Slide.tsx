@@ -60,6 +60,7 @@ export default function Slide(props: SlideProps) {
         >
             {(style: any) => (
                 <animated.div
+                    role={'slide'}
                     style={{
                         position: 'absolute',
                         height: '70%',

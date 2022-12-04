@@ -55,6 +55,7 @@ export default class Home extends Component {
         })
         return (
             <div
+                role={'home'}
                 style={{
                     position: 'fixed',
                     display: 'flex',
