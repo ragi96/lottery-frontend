@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { VerticalCarousel } from "../components";
 import { config } from "@react-spring/web";
-import { SlideProp } from "../types/Slide";
+import { SlideProp } from "../types/SlideProp";
 
 
 export default class Home extends Component {
