@@ -22,15 +22,6 @@ interface VerticalCarouselProps {
     showNavigation: boolean
     animationConfig: any
 }
-interface Slide {
-    key: number
-    title: string
-    text1: string
-    text2: string
-    label: string
-    link: string
-    reverse: boolean
-}
 
 class VerticalCarousel extends Component<VerticalCarouselProps> {
     state = {
@@ -52,19 +43,6 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
         }
     }
 
-    static propTypes = {
-        slides: PropTypes.arrayOf(
-            PropTypes.shape({
-                key: PropTypes.any,
-                content: PropTypes.string,
-            })
-        ).isRequired,
-        goToSlide: PropTypes.number,
-        showNavigation: PropTypes.bool,
-        offsetRadius: PropTypes.number,
-        animationConfig: PropTypes.object,
-    }
-
     static defaultProps = {
         offsetRadius: 2,
         animationConfig: { tension: 120, friction: 14 },
@@ -77,7 +55,6 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
     moveSlide = (direction: number) => {
         this.setState({
             index: this.modBySlidesLength(this.state.index + direction),
-            goToSlide: null,
         })
     }
 
