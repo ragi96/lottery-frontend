@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Slide, Wrapper } from './'
-import { SlideProp } from '../types/SlideProp'
+import { SlideContent } from '../types/SlideContent'
 
 function mod(a: number, b: number) {
     return ((a % b) + b) % b
 }
 
 interface VerticalCarouselProps {
-    slides: SlideProp[]
+    slides: SlideContent[]
     offsetRadius: number
     showNavigation: boolean
     animationConfig: any

@@ -1,4 +1,4 @@
-export interface SlideProp {
+export interface SlideContent {
     key: number
     title: string
     text1: string

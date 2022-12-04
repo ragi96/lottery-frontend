@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { VerticalCarousel } from '../components'
 import { config } from '@react-spring/web'
-import { SlideProp } from '../types/SlideProp'
+import { SlideContent } from '../types/SlideContent'
 
 export default class Home extends Component {
     state = {
@@ -42,7 +42,7 @@ export default class Home extends Component {
     ]
 
     render() {
-        let slides = this.content.map((slide: SlideProp) => {
+        let slides = this.content.map((slide: SlideContent) => {
             return {
                 key: slide.key,
                 title: slide.title,
