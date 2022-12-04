@@ -1,0 +1,29 @@
+[
+    {
+        "key": 1,
+        "title": "ragilab color lottery",
+        "text1": "Pick your favorite color and win the jackpot on the first lottery on substrate.",
+        "text2": "Use the frontend and the contract (written in ink!) as base for your own project - and get rich quick",
+        "label": "Submit Bet",
+        "link": "/lottery",
+        "reverse": false
+    },
+    {
+        "key": 2,
+        "title": "Rules",
+        "text1": "100% of all bets are distributed to the winner.",
+        "text2": "",
+        "label": "Github",
+        "link": "https://www.google.ch/",
+        "reverse": true
+    },
+    {
+        "key": 3,
+        "title": "Source",
+        "text1": "Check out the source on github, write PR's, add Issues, fork it.",
+        "text2": "",
+        "label": "Github",
+        "link": "https://www.google.ch/",
+        "reverse": false
+    }
+]

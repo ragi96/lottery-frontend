@@ -21,7 +21,7 @@ export default function Header() {
   return (
     <Wrapper>
       <Logo />
-      <Button primary to="/lottery" label="Go To Lottery" />
+      <Button primary={true} to="/lottery" label="Go To Lottery" />
     </Wrapper>
   );
 }

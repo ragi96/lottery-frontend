@@ -24,7 +24,7 @@ const Btn = styled(Link)`
 `;
 
 interface ButtonStyleProps {
-  primary?: boolean;
+  primary: boolean;
 }
 
 export default function Button(props: ButtonProps) {
@@ -36,7 +36,7 @@ export default function Button(props: ButtonProps) {
 }
 
 interface ButtonProps {
+  primary: boolean;
   to: string;
-  primary?: boolean;
   label: string;
 }
