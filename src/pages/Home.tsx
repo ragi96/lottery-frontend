@@ -69,7 +69,6 @@ export default class Home extends Component {
           slides={slides}
           offsetRadius={this.state.offsetRadius}
           showNavigation={this.state.showNavigation}
-          animationConfig={this.state.config}
         />
       </div>
     );

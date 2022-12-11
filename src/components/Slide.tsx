@@ -1,5 +1,5 @@
 import React from 'react';
-import { Spring, animated } from '@react-spring/web';
+import { animated, useSpring } from '@react-spring/web';
 import { Anim, Heading, Text, Button } from './';
 import { Container, Row, Col } from 'react-grid-system';
 
@@ -12,12 +12,11 @@ interface SlideProps {
   offsetRadius: number;
   index: number;
   reverse: boolean;
-  animationConfig: any;
   moveSlide: (index: number) => void;
 }
 
 export default function Slide(props: SlideProps) {
-  const { title, text1, text2, label, link, offsetRadius, index, reverse, animationConfig, moveSlide } = props;
+  const { title, text1, text2, label, link, offsetRadius, index, reverse, moveSlide } = props;
   const down = false;
   const offsetFromMiddle = index - offsetRadius;
   const totalPresentables = 2 * offsetRadius + 1;
@@ -49,45 +48,41 @@ export default function Slide(props: SlideProps) {
     translateY -= translateYoffset;
   }
 
+  const springProp = useSpring({
+    to: {
+      transform: `translateX(0%) translateY(${translateY}%) scale(${distanceFactor})`,
+      top: `${offsetRadius === 0 ? 50 : 50 + (offsetFromMiddle * 50) / offsetRadius}%`,
+      opacity: distanceFactor === 1 ? 1 : 0
+    }
+  });
+
   return (
-    <Spring
-      to={{
-        transform: `translateX(0%) translateY(${translateY}%) scale(${distanceFactor})`,
-        top: `${offsetRadius === 0 ? 50 : 50 + (offsetFromMiddle * 50) / offsetRadius}%`,
-        opacity: distanceFactor === 1 ? 1 : 0
+    <animated.div
+      role={'slide'}
+      style={{
+        position: 'absolute',
+        height: '70%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        transformOrigin: '50% 50%',
+        ...springProp,
+        zIndex: Math.abs(Math.abs(offsetFromMiddle) - 2)
       }}
-      config={animationConfig}
     >
-      {(style: any) => (
-        <animated.div
-          role={'slide'}
-          style={{
-            position: 'absolute',
-            height: '70%',
-            top: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transformOrigin: '50% 50%',
-            ...style,
-            zIndex: Math.abs(Math.abs(offsetFromMiddle) - 2)
-          }}
-        >
-          <Container onClick={() => moveSlide(offsetFromMiddle)}>
-            <Row>
-              <Col sm={12} md={6}>
-                <Heading headingLevel="h1" text={title} />
-                <Text text={text1} />
-                <Text text={text2} />
-                <Button to={link} label={label} primary />
-              </Col>
-              <Col sm={12} md={6}>
-                <Anim />
-              </Col>
-            </Row>
-          </Container>
-        </animated.div>
-      )}
-    </Spring>
+      <Container onClick={() => moveSlide(offsetFromMiddle)}>
+        <Row direction={reverse ? 'row-reverse' : 'row'}>
+          <Col sm={12} md={6}>
+            <Heading headingLevel="h1" text={title} />
+            <Text text={text1} />
+            <Text text={text2} />
+            <Button to={link} label={label} primary={true} />
+          </Col>
+          <Col sm={12} md={6}>
+            <Anim />
+          </Col>
+        </Row>
+      </Container>
+    </animated.div>
   );
 }

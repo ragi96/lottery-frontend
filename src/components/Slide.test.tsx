@@ -18,7 +18,6 @@ test('slide exists', () => {
         offsetRadius={20}
         index={0}
         reverse={false}
-        animationConfig={1}
         moveSlide={moveSlide}
       />
     </BrowserRouter>
@@ -38,7 +37,6 @@ test('slide has title', () => {
         offsetRadius={20}
         index={0}
         reverse={false}
-        animationConfig={1}
         moveSlide={moveSlide}
       />
     </BrowserRouter>
@@ -58,7 +56,6 @@ test('slide has text1', () => {
         offsetRadius={20}
         index={0}
         reverse={false}
-        animationConfig={1}
         moveSlide={moveSlide}
       />
     </BrowserRouter>
@@ -78,7 +75,6 @@ test('slide has text2', () => {
         offsetRadius={20}
         index={0}
         reverse={false}
-        animationConfig={1}
         moveSlide={moveSlide}
       />
     </BrowserRouter>
@@ -98,7 +94,6 @@ test('slide has label', () => {
         offsetRadius={20}
         index={0}
         reverse={false}
-        animationConfig={1}
         moveSlide={moveSlide}
       />
     </BrowserRouter>
@@ -118,7 +113,6 @@ test('slide has link', () => {
         offsetRadius={20}
         index={0}
         reverse={false}
-        animationConfig={1}
         moveSlide={moveSlide}
       />
     </BrowserRouter>

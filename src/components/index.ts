@@ -7,5 +7,6 @@ import Slide from './Slide';
 import Anim from './Anim';
 import Wrapper from './Wrapper';
 import VerticalCarousel from './VerticalCarousel';
+import Navigation from './Navigation';
 
-export { Header, Logo, Button, Text, Heading, Slide, Anim, Wrapper, VerticalCarousel };
+export { Header, Logo, Button, Text, Heading, Slide, Anim, Wrapper, VerticalCarousel, Navigation };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Slide, Wrapper } from './';
+import { Slide, Wrapper, Navigation } from './';
 import { SlideContent } from '../types/SlideContent';
 
 function mod(a: number, b: number) {
@@ -10,7 +10,6 @@ interface VerticalCarouselProps {
   slides: SlideContent[];
   offsetRadius: number;
   showNavigation: boolean;
-  animationConfig: any;
 }
 
 class VerticalCarousel extends Component<VerticalCarouselProps> {
@@ -31,11 +30,6 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
     } else {
       this.moveSlide(1);
     }
-  };
-
-  static defaultProps = {
-    offsetRadius: 2,
-    animationConfig: { tension: 120, friction: 14 }
   };
 
   modBySlidesLength = (index: number) => {
@@ -77,7 +71,12 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
   }
 
   render() {
-    const { animationConfig, offsetRadius } = this.props;
+    const { offsetRadius, showNavigation } = this.props;
+
+    let navigationButtons = null;
+    if (showNavigation) {
+      navigationButtons = <Navigation moveSlide={this.moveSlide} />;
+    }
     return (
       <React.Fragment>
         <div role={'verticalCarousel'}>
@@ -94,9 +93,9 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
                 moveSlide={this.moveSlide}
                 offsetRadius={this.clampOffsetRadius(offsetRadius)}
                 index={presentableIndex}
-                animationConfig={animationConfig}
               />
             ))}
+            {navigationButtons}
           </Wrapper>
         </div>
       </React.Fragment>
