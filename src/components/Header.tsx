@@ -1,6 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
-import { Logo, Button } from './';
+import { Logo, Button } from '../components';
 
 const Wrapper = styled.header`
   width: 100%;

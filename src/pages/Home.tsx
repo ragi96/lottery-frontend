@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { VerticalCarousel } from '../components';
 import { config } from '@react-spring/web';
 import { SlideContent } from '../types/SlideContent';

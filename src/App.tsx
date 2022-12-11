@@ -1,4 +1,3 @@
-import React from 'react';
 import { Header } from './components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { setConfiguration, ScreenClassProvider } from 'react-grid-system';

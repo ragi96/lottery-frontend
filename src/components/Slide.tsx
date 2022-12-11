@@ -1,4 +1,3 @@
-import React from 'react';
 import { animated, useSpring } from '@react-spring/web';
 import { Anim, Heading, Text, Button } from './';
 import { Container, Row, Col } from 'react-grid-system';
