@@ -7,7 +7,7 @@ import { ApiContextProvider } from '../context/ApiContext';
 function Main() {
   return (
     <Wrapper>
-      <Container>
+      <Container role={'lottery'}>
         <Row direction="row">
           <Col sm={12} md={6}>
             <Heading headingLevel="h1" text="Pick Your Color" />
