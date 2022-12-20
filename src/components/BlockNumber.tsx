@@ -1,18 +1,28 @@
-import { useState, useContext } from 'react';
-import { Text } from './';
-import { ApiContext } from '../context/';
+import { useState, useEffect } from 'react';
+import { Text } from '.';
+import { useApi } from '../context';
 
 export default function BlockNumber() {
-  const { api, apiReady } = useContext(ApiContext);
+  const { api } = useApi();
   const [blockNumber, setBlockNumber] = useState(0);
-  api?.isReady.then(() => {
-    api?.rpc.chain.subscribeNewHeads((header) => {
-      setBlockNumber(header.number.toNumber());
-    });
-  });
+  const [blockNumberTimer, setBlockNumberTimer] = useState(0);
 
-  if (apiReady === false) {
-    return <Text text="Loading..." />;
-  }
+  useEffect(() => {
+    if (api !== null && api !== undefined) {
+      api.rpc.chain.subscribeNewHeads((header) => {
+        setBlockNumber(header.number.toNumber());
+      });
+    }
+  }, [api]);
+
+  const timer = () => {
+    setBlockNumberTimer((time) => time + 1);
+  };
+
+  useEffect(() => {
+    const id = setInterval(timer, 1000);
+    return () => clearInterval(id);
+  }, []);
+
   return <Text text={blockNumber.toString()} />;
 }

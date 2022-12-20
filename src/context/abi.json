@@ -1,0 +1,481 @@
+{
+  "source": {
+    "hash": "0x9b387cc45e4928f8fc0052006e0794c7b98112595a7cc1d911d9a0f9093ef671",
+    "language": "ink! 3.4.0",
+    "compiler": "rustc 1.68.0-nightly"
+  },
+  "contract": {
+    "name": "lottery",
+    "version": "0.1.0",
+    "authors": [
+      "[Rafael Giezendanner] <[your_email]>"
+    ]
+  },
+  "V3": {
+    "spec": {
+      "constructors": [
+        {
+          "args": [],
+          "docs": [],
+          "label": "new",
+          "payable": false,
+          "selector": "0x9bae9d5e"
+        }
+      ],
+      "docs": [],
+      "events": [
+        {
+          "args": [
+            {
+              "docs": [],
+              "indexed": true,
+              "label": "bet",
+              "type": {
+                "displayName": [],
+                "type": 3
+              }
+            },
+            {
+              "docs": [],
+              "indexed": true,
+              "label": "from",
+              "type": {
+                "displayName": [
+                  "AccountId"
+                ],
+                "type": 5
+              }
+            }
+          ],
+          "docs": [
+            " Emitted whenever a new bet is being registered."
+          ],
+          "label": "RegisterBet"
+        }
+      ],
+      "messages": [
+        {
+          "args": [
+            {
+              "label": "bet",
+              "type": {
+                "displayName": [],
+                "type": 3
+              }
+            }
+          ],
+          "docs": [
+            " Register specific bet with caller as owner."
+          ],
+          "label": "register_bet",
+          "mutates": true,
+          "payable": true,
+          "returnType": {
+            "displayName": [
+              "Result"
+            ],
+            "type": 9
+          },
+          "selector": "0xc6f3dfea"
+        },
+        {
+          "args": [],
+          "docs": [
+            " Simply returns the winner bet"
+          ],
+          "label": "get",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [],
+            "type": 3
+          },
+          "selector": "0x2f865bd9"
+        },
+        {
+          "args": [
+            {
+              "label": "bet_hash",
+              "type": {
+                "displayName": [],
+                "type": 3
+              }
+            }
+          ],
+          "docs": [],
+          "label": "get_accounts_by_bet",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [],
+            "type": 4
+          },
+          "selector": "0x0f9dcb52"
+        },
+        {
+          "args": [],
+          "docs": [],
+          "label": "get_last_winner_or_default",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [],
+            "type": 4
+          },
+          "selector": "0x8463fcf6"
+        },
+        {
+          "args": [],
+          "docs": [
+            " Simply returns the block of the last drawing"
+          ],
+          "label": "get_last_drawing",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "BlockNumber"
+            ],
+            "type": 7
+          },
+          "selector": "0x04826e9c"
+        },
+        {
+          "args": [],
+          "docs": [
+            " Simply returns the block of the last drawing"
+          ],
+          "label": "get_next_drawing",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "BlockNumber"
+            ],
+            "type": 7
+          },
+          "selector": "0x3f2ee324"
+        },
+        {
+          "args": [],
+          "docs": [
+            " returns the price per winner of the last round"
+          ],
+          "label": "get_last_pot_per_bet",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "Balance"
+            ],
+            "type": 8
+          },
+          "selector": "0x4f660cbf"
+        },
+        {
+          "args": [],
+          "docs": [
+            " returns the block of the last drawing"
+          ],
+          "label": "get_jackpot",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "Balance"
+            ],
+            "type": 8
+          },
+          "selector": "0x2f3a120b"
+        }
+      ]
+    },
+    "storage": {
+      "struct": {
+        "fields": [
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "ty": 0
+              }
+            },
+            "name": "round"
+          },
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0100000000000000000000000000000000000000000000000000000000000000",
+                "ty": 1
+              }
+            },
+            "name": "ticket_and_address"
+          },
+          {
+            "layout": {
+              "array": {
+                "cellsPerElem": 1,
+                "layout": {
+                  "cell": {
+                    "key": "0x0a00000000000000000000000000000000000000000000000000000000000000",
+                    "ty": 5
+                  }
+                },
+                "len": 8,
+                "offset": "0x0200000000000000000000000000000000000000000000000000000000000000"
+              }
+            },
+            "name": "def_address"
+          },
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0a00000000000000000000000000000000000000000000000000000000000000",
+                "ty": 7
+              }
+            },
+            "name": "last_drawing"
+          },
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0b00000000000000000000000000000000000000000000000000000000000000",
+                "ty": 8
+              }
+            },
+            "name": "jackpot"
+          },
+          {
+            "layout": {
+              "array": {
+                "cellsPerElem": 1,
+                "layout": {
+                  "cell": {
+                    "key": "0x2c00000000000000000000000000000000000000000000000000000000000000",
+                    "ty": 0
+                  }
+                },
+                "len": 32,
+                "offset": "0x0c00000000000000000000000000000000000000000000000000000000000000"
+              }
+            },
+            "name": "winner_bet"
+          },
+          {
+            "layout": {
+              "cell": {
+                "key": "0x2c00000000000000000000000000000000000000000000000000000000000000",
+                "ty": 8
+              }
+            },
+            "name": "last_pot_per_bet"
+          }
+        ]
+      }
+    },
+    "types": [
+      {
+        "id": 0,
+        "type": {
+          "def": {
+            "primitive": "u8"
+          }
+        }
+      },
+      {
+        "id": 1,
+        "type": {
+          "def": {
+            "composite": {
+              "fields": [
+                {
+                  "name": "offset_key",
+                  "type": 6,
+                  "typeName": "Key"
+                }
+              ]
+            }
+          },
+          "params": [
+            {
+              "name": "K",
+              "type": 2
+            },
+            {
+              "name": "V",
+              "type": 4
+            }
+          ],
+          "path": [
+            "ink_storage",
+            "lazy",
+            "mapping",
+            "Mapping"
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "type": {
+          "def": {
+            "tuple": [
+              3,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "id": 3,
+        "type": {
+          "def": {
+            "array": {
+              "len": 32,
+              "type": 0
+            }
+          }
+        }
+      },
+      {
+        "id": 4,
+        "type": {
+          "def": {
+            "array": {
+              "len": 8,
+              "type": 5
+            }
+          }
+        }
+      },
+      {
+        "id": 5,
+        "type": {
+          "def": {
+            "composite": {
+              "fields": [
+                {
+                  "type": 3,
+                  "typeName": "[u8; 32]"
+                }
+              ]
+            }
+          },
+          "path": [
+            "ink_env",
+            "types",
+            "AccountId"
+          ]
+        }
+      },
+      {
+        "id": 6,
+        "type": {
+          "def": {
+            "composite": {
+              "fields": [
+                {
+                  "type": 3,
+                  "typeName": "[u8; 32]"
+                }
+              ]
+            }
+          },
+          "path": [
+            "ink_primitives",
+            "Key"
+          ]
+        }
+      },
+      {
+        "id": 7,
+        "type": {
+          "def": {
+            "primitive": "u32"
+          }
+        }
+      },
+      {
+        "id": 8,
+        "type": {
+          "def": {
+            "primitive": "u128"
+          }
+        }
+      },
+      {
+        "id": 9,
+        "type": {
+          "def": {
+            "variant": {
+              "variants": [
+                {
+                  "fields": [
+                    {
+                      "type": 10
+                    }
+                  ],
+                  "index": 0,
+                  "name": "Ok"
+                },
+                {
+                  "fields": [
+                    {
+                      "type": 11
+                    }
+                  ],
+                  "index": 1,
+                  "name": "Err"
+                }
+              ]
+            }
+          },
+          "params": [
+            {
+              "name": "T",
+              "type": 10
+            },
+            {
+              "name": "E",
+              "type": 11
+            }
+          ],
+          "path": [
+            "Result"
+          ]
+        }
+      },
+      {
+        "id": 10,
+        "type": {
+          "def": {
+            "tuple": []
+          }
+        }
+      },
+      {
+        "id": 11,
+        "type": {
+          "def": {
+            "variant": {
+              "variants": [
+                {
+                  "index": 0,
+                  "name": "BetAlreadyExists"
+                },
+                {
+                  "index": 1,
+                  "name": "TicketCosts"
+                }
+              ]
+            }
+          },
+          "path": [
+            "lottery",
+            "lottery",
+            "Error"
+          ]
+        }
+      }
+    ]
+  }
+}

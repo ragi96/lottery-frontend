@@ -1,10 +1,23 @@
-import React from 'react';
-import { BlockNumber } from '../components';
-import { Wrapper, Heading, Text } from '../components/';
+import React, { useState } from 'react';
+import { Wrapper, Heading, Text, BlockNumber, Jackpot, AccountSelector } from '../components/';
 import { Container, Row, Col } from 'react-grid-system';
-import { ApiContextProvider } from '../context/ApiContext';
+import { ApiContextProvider, useApi, ContractContextProvider, useContract } from '../context/';
 
 function Main() {
+  const [accountAddress, setAccountAddress] = useState('');
+  const { keyring, keyringState } = useApi();
+  const { contract } = useContract();
+
+  if (keyring === null) {
+    return null;
+  }
+
+  if (contract === null) {
+    return null;
+  }
+
+  const accountPair = accountAddress && keyringState === 'LOADED' && keyring.getPair(accountAddress);
+
   return (
     <Wrapper>
       <Container role={'lottery'}>
@@ -13,8 +26,11 @@ function Main() {
             <Heading headingLevel="h1" text="Pick Your Color" />
             <Text text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor." />
             <BlockNumber />
+            <Jackpot accountPair={accountPair} />
           </Col>
-          <Col sm={12} md={6}></Col>
+          <Col sm={12} md={6}>
+            <AccountSelector setAccountAddress={setAccountAddress} />
+          </Col>
         </Row>
       </Container>
     </Wrapper>
@@ -25,7 +41,9 @@ export default function Lottery() {
   return (
     <React.Fragment>
       <ApiContextProvider>
-        <Main />
+        <ContractContextProvider>
+          <Main />
+        </ContractContextProvider>
       </ApiContextProvider>
     </React.Fragment>
   );

@@ -9,5 +9,21 @@ import Wrapper from './Wrapper';
 import VerticalCarousel from './VerticalCarousel';
 import Navigation from './Navigation';
 import BlockNumber from './BlockNumber';
+import Jackpot from './Jackpot';
+import AccountSelector from './AccountSelector';
 
-export { Header, Logo, Button, Text, Heading, Slide, Anim, Wrapper, VerticalCarousel, Navigation, BlockNumber };
+export {
+  Header,
+  Logo,
+  Button,
+  Text,
+  Heading,
+  Slide,
+  Anim,
+  Wrapper,
+  VerticalCarousel,
+  Navigation,
+  BlockNumber,
+  Jackpot,
+  AccountSelector
+};
