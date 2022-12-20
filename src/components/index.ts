@@ -11,6 +11,7 @@ import Navigation from './atom/Navigation';
 import BlockNumber from './molecules/BlockNumber';
 import Jackpot from './molecules/Jackpot';
 import AccountSelector from './molecules/AccountSelector';
+import NextDraw from './molecules/NextDraw';
 
 export {
   Header,
@@ -25,5 +26,6 @@ export {
   Navigation,
   BlockNumber,
   Jackpot,
-  AccountSelector
+  AccountSelector,
+  NextDraw
 };

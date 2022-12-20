@@ -37,7 +37,7 @@ export default function BlockNumber() {
 
   return (
     <BlockNumberWrapper role={'block-number'}>
-      <Text text={'Block-Number:' + blockNumber.toString()} />
+      <Text text={'Block-Number: ' + blockNumber.toString()} />
     </BlockNumberWrapper>
   );
 }

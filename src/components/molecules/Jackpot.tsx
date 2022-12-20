@@ -12,6 +12,7 @@ const JackpotWrapper = styled('div')`
   position: absolute;
   top: -100px;
   left: 50%;
+  transform: translateX(-50%);
   z-index: 1;
 `;
 

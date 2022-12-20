@@ -2,6 +2,17 @@ import { Component } from 'react';
 import { VerticalCarousel } from '../components';
 import { config } from '@react-spring/web';
 import { SlideContent } from '../types/SlideContent';
+import styled from 'styled-components';
+import HomeContent from './HomeContent.json';
+
+const StyledHome = styled.div`
+  position: 'fixed';
+  display: 'flex';
+  flex-direction: 'column';
+  justify-content: 'center';
+  width: '100vw';
+  margin: '0 auto';
+`;
 
 export default class Home extends Component {
   state = {
@@ -11,35 +22,7 @@ export default class Home extends Component {
     config: config.gentle
   };
 
-  content = [
-    {
-      key: 1,
-      title: 'ragilab color lottery',
-      text1: 'Pick your favorite color and win the jackpot on the first lottery on substrate.',
-      text2: 'Use the frontend and the contract (written in ink!) as base for your own project - and get rich quick',
-      label: 'Submit Bet',
-      link: '/lottery',
-      reverse: false
-    },
-    {
-      key: 2,
-      title: 'Rules',
-      text1: '100% of all bets are distributed to the winner.',
-      text2: '',
-      label: 'Github',
-      link: 'https://www.google.ch/',
-      reverse: true
-    },
-    {
-      key: 3,
-      title: 'Source',
-      text1: "Check out the source on github, write PR's, add Issues, fork it.",
-      text2: '',
-      label: 'Github',
-      link: 'https://www.google.ch/',
-      reverse: false
-    }
-  ];
+  content = HomeContent;
 
   render() {
     const slides = this.content.map((slide: SlideContent) => {
@@ -54,23 +37,13 @@ export default class Home extends Component {
       };
     });
     return (
-      <div
-        role={'home'}
-        style={{
-          position: 'fixed',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          width: '100vw',
-          margin: '0 auto'
-        }}
-      >
+      <StyledHome role={'home'}>
         <VerticalCarousel
           slides={slides}
           offsetRadius={this.state.offsetRadius}
           showNavigation={this.state.showNavigation}
         />
-      </div>
+      </StyledHome>
     );
   }
 }
