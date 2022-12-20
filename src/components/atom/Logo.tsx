@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-const Wrapper = styled.div`
+const SvgWrapper = styled.div`
   width: 98px;
   height: 75px;
 `;
@@ -8,7 +8,7 @@ const Wrapper = styled.div`
 export default function Logo() {
   return (
     <Link to="/" role="logo">
-      <Wrapper>
+      <SvgWrapper>
         <svg width="98" height="75" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M46.67 36.244h-4.52v19.434c-8.7.01-15.909.013-15.923 0l2.277 4.844H46.65l.02-24.278z" fill="#FF0" />
           <path
@@ -28,7 +28,7 @@ export default function Logo() {
             fill="#FF0"
           />
         </svg>
-      </Wrapper>
+      </SvgWrapper>
     </Link>
   );
 }

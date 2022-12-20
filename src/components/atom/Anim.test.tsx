@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { Anim } from './';
+import { Anim } from '..';
 
 test('animation with img', () => {
   const { getByRole } = render(<Anim />);

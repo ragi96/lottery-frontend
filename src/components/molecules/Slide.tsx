@@ -1,5 +1,5 @@
 import { animated, useSpring } from '@react-spring/web';
-import { Anim, Heading, Text, Button } from './';
+import { Anim, Heading, Text, Button } from '..';
 import { Container, Row, Col } from 'react-grid-system';
 
 interface SlideProps {
@@ -72,7 +72,7 @@ export default function Slide(props: SlideProps) {
       <Container onClick={() => moveSlide(offsetFromMiddle)}>
         <Row direction={reverse ? 'row-reverse' : 'row'}>
           <Col sm={12} md={6}>
-            <Heading headingLevel="h1" text={title} />
+            <Heading headingLevel="h1">{title}</Heading>
             <Text text={text1} />
             <Text text={text2} />
             <Button to={link} label={label} primary={true} />

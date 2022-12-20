@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Logo, Button } from '../components';
+import { Logo, Button } from '../';
 
 const Wrapper = styled.header`
   width: 100%;

@@ -2,6 +2,11 @@ import { Header } from './components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { setConfiguration, ScreenClassProvider } from 'react-grid-system';
 import { Home, Lottery } from './pages';
+import styled from 'styled-components';
+
+const StyledApp = styled.div`
+  position: relative;
+`;
 
 setConfiguration({
   breakpoints: [576, 1280],
@@ -14,15 +19,17 @@ setConfiguration({
 
 function App() {
   return (
-    <ScreenClassProvider>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="lottery" element={<Lottery />} />
-        </Routes>
-      </BrowserRouter>
-    </ScreenClassProvider>
+    <StyledApp role={'app'}>
+      <ScreenClassProvider>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="lottery" element={<Lottery />} />
+          </Routes>
+        </BrowserRouter>
+      </ScreenClassProvider>
+    </StyledApp>
   );
 }
 

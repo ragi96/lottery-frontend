@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { Navigation } from './';
+import { Navigation } from '..';
 
 function moveSlide(): void {
   alert('called');

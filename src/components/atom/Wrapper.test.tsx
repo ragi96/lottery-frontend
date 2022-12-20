@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { Wrapper } from './';
+import { Wrapper } from '..';
 
 test('wrapper exists', () => {
   const { getByRole } = render(

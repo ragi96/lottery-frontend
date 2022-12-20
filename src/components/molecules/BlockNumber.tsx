@@ -1,6 +1,17 @@
 import { useState, useEffect } from 'react';
-import { Text } from '.';
-import { useApi } from '../context';
+import { Text } from '..';
+import { useApi } from '../../context';
+import styled from 'styled-components';
+
+const BlockNumberWrapper = styled('div')`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -100px;
+  left: 25px;
+  z-index: 1;
+`;
 
 export default function BlockNumber() {
   const { api } = useApi();
@@ -22,7 +33,11 @@ export default function BlockNumber() {
   useEffect(() => {
     const id = setInterval(timer, 1000);
     return () => clearInterval(id);
-  }, []);
+  }, [blockNumberTimer]);
 
-  return <Text text={blockNumber.toString()} />;
+  return (
+    <BlockNumberWrapper role={'block-number'}>
+      <Text text={'Block-Number:' + blockNumber.toString()} />
+    </BlockNumberWrapper>
+  );
 }

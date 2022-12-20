@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { Logo } from './';
+import { Logo } from '..';
 
 test('logo exists', () => {
   const { getByRole } = render(

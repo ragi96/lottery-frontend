@@ -23,7 +23,7 @@ function Main() {
       <Container role={'lottery'}>
         <Row direction="row">
           <Col sm={12} md={6}>
-            <Heading headingLevel="h1" text="Pick Your Color" />
+            <Heading headingLevel="h1">Pick Your Color</Heading>
             <Text text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor." />
             <BlockNumber />
             <Jackpot accountPair={accountPair} />

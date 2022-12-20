@@ -1,20 +1,31 @@
 import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
-import { useApi } from '../context/';
+import { useApi } from '../../context';
 import styled from 'styled-components';
 import { ApiPromise } from '@polkadot/api';
+import Identicon from '@polkadot/react-identicon';
 
 const DropDownContainer = styled('div')`
   width: 100%;
 `;
 
 const DropDownHeader = styled('div')`
-  font-size: 20px;
   height: 30px;
-  line-height: 1.22;
-  color: #ff3c00;
-  padding-top: 15px;
   border-top: 1px solid #fff;
   border-right: 1px solid #fff;
+  padding-top: 9px;
+  padding-bottom: 4px;
+  position: relative;
+`;
+
+const HeaderSpan = styled('span')`
+  line-height: 1.22rem;
+  color: #ff3c00;
+  font-size: 1.3rem;
+  padding-top: 4px;
+  padding-left: 38px;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 const DropDownListContainer = styled('div')``;
@@ -30,11 +41,24 @@ const DropDownList = styled('ul')`
 
 const ListItem = styled('li')`
   list-style: none;
-  padding-left: 38px;
+
   color: #fff;
   border-bottom: 1px solid #fff;
   height: 32px;
-  padding-top: 13px;
+  padding-left: 38px;
+  padding-top: 9px;
+  padding-bottom: 4px;
+  position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden;
+`;
+
+const ListItemIcon = styled(Identicon)`
+  position: absolute;
+  left: 4px;
+  top: 11px;
+  bottom: 0;
+  margin: auto;
 `;
 
 interface AccountSelectorProps {
@@ -90,13 +114,17 @@ function Main(props: AccountSelectorProps) {
   }
 
   return (
-    <DropDownContainer>
-      <DropDownHeader onClick={toggling}>{selectedAccount.value}</DropDownHeader>
+    <DropDownContainer role={'account-selector'}>
+      <DropDownHeader onClick={toggling}>
+        <ListItemIcon value={selectedAccount.value} size={24} theme={'polkadot'} />
+        <HeaderSpan>{selectedAccount.value}</HeaderSpan>
+      </DropDownHeader>
       {isOpen && (
         <DropDownListContainer>
           <DropDownList>
             {keyringOptions.map((option: KeyType) => (
               <ListItem onClick={onOptionClicked(option.key)} key={Math.random()}>
+                <ListItemIcon value={option.value} size={24} theme={'substrate'} />
                 {option.value}
               </ListItem>
             ))}

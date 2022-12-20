@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { Header } from './';
+import { Header } from '..';
 
 test('header exists', () => {
   const { getByRole } = render(
