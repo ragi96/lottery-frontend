@@ -39,7 +39,7 @@ export default function NextDraw(prop: NextDrawProps) {
 
   useEffect(() => {
     fetchNextDraw();
-  }, [contract, nextDrawBlock]);
+  }, [contract, accountPair, nextDrawBlock]);
 
   return (
     <NextDrawStyled role={'next-draw'}>
