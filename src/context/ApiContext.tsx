@@ -1,7 +1,6 @@
 import React, { useReducer, useContext } from 'react';
 import { Reducer } from 'redux';
 import jsonrpc from '@polkadot/types/interfaces/jsonrpc';
-import queryString from 'query-string';
 
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
@@ -10,10 +9,6 @@ import { ApiActionTypes, ApiStateActions, ApiState } from '../types/api';
 
 import config from '../config';
 import { KeyringInstance } from '@polkadot/keyring/types';
-
-const parsedQuery = queryString.parse(window.location.search);
-const connectedSocket = parsedQuery.rpc || config.PROVIDER_SOCKET;
-console.log(`Connected socket: ${connectedSocket}`);
 
 export interface ApiContextType {
   api: ApiPromise | null;
@@ -28,7 +23,7 @@ export interface ApiContextProviderProps {
 }
 
 const initialState: ApiState = {
-  socket: connectedSocket,
+  socket: config.PROVIDER_SOCKET,
   jsonRpc: { ...jsonrpc, ...config.RPC },
   types: config.types,
   keyring: null,

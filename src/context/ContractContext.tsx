@@ -1,6 +1,5 @@
 import React, { useReducer, useContext } from 'react';
 import { Reducer } from 'redux';
-import queryString from 'query-string';
 
 import { useApi } from './ApiContext';
 
@@ -10,10 +9,6 @@ import { ApiPromise } from '@polkadot/api';
 import { ContractActionTypes, ContractState, ContractStateActions } from '../types/contract';
 
 import config from '../config';
-
-const parsedQuery = queryString.parse(window.location.search);
-const connectedSocket = parsedQuery.rpc || config.PROVIDER_SOCKET;
-console.log(`Connected socket: ${connectedSocket}`);
 
 const initialState: ContractState = {
   type: ContractActionTypes.CONTRACT_INIT,
