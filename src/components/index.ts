@@ -13,6 +13,8 @@ import Jackpot from './molecules/Jackpot';
 import AccountSelector from './molecules/AccountSelector';
 import NextDraw from './molecules/NextDraw';
 import BetForm from './organisms/BetForm';
+import Loader from './atom/Loader';
+import LoadingCircle from './atom/LoadingCircle';
 
 export {
   Header,
@@ -29,5 +31,7 @@ export {
   Jackpot,
   AccountSelector,
   NextDraw,
-  BetForm
+  BetForm,
+  Loader,
+  LoadingCircle
 };

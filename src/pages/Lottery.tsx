@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Wrapper, Heading, Text, AccountSelector, BetForm } from '../components/';
+import { Wrapper, Heading, Text, AccountSelector, BetForm, Loader } from '../components/';
 import { Container, Row, Col } from 'react-grid-system';
-import { ApiContextProvider, useApi, ContractContextProvider, useContract } from '../context/';
+import { useApi, ContractContextProvider, useContract } from '../context/';
 import LotteryHeader from '../components/organisms/LotteryHeader';
 
 function Main() {
@@ -11,16 +11,26 @@ function Main() {
   const [accountAddress, setAccountAddress] = useState('');
 
   useEffect(() => {
-    if (keyring !== null) {
+    if (keyring !== null && keyring !== undefined && keyring.getPairs().length > 0) {
       setAccountAddress(keyring.getPairs()[0].address || '');
     }
   }, [keyring, api, contract, contract]);
+
+  if (api === null || keyring === null || keyring === undefined || accountAddress === '') {
+    return (
+      <Loader>
+        <Text text="Please Review Your Polkadot{.js} Extension" />
+      </Loader>
+    );
+  }
 
   return (
     <Wrapper>
       <Container role={'lottery'}>
         <Row direction="row">
-          <LotteryHeader accountAddress={accountAddress} />
+          <Col sm={12}>
+            <LotteryHeader accountAddress={accountAddress} />
+          </Col>
         </Row>
         <Row direction="row">
           <Col sm={12} md={6}>

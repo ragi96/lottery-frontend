@@ -10,6 +10,7 @@ const Paragraph = styled.p`
   text-align: left;
   color: #fff;
   padding-bottom: 30px;
+  display: inline-block;
 `;
 
 export default function Text(props: TextProps) {

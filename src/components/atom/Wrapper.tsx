@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { JustChildProps } from '../../types/JustChild';
 
 const Wrap = styled.div`
   width: calc(100% - 4px);
@@ -21,10 +22,6 @@ const Wrap = styled.div`
   }
 `;
 
-interface WrapperProps {
-  children: React.ReactNode;
-}
-
-export default function Wrapper(props: WrapperProps) {
+export default function Wrapper(props: JustChildProps) {
   return <Wrap role={'wrapper'}>{props.children}</Wrap>;
 }
