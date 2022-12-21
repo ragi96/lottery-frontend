@@ -5,12 +5,6 @@ import styled from 'styled-components';
 
 const BlockNumberWrapper = styled('div')`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: -100px;
-  left: 25px;
-  z-index: 1;
 `;
 
 export default function BlockNumber() {

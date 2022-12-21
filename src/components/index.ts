@@ -12,6 +12,7 @@ import BlockNumber from './molecules/BlockNumber';
 import Jackpot from './molecules/Jackpot';
 import AccountSelector from './molecules/AccountSelector';
 import NextDraw from './molecules/NextDraw';
+import BetForm from './organisms/BetForm';
 
 export {
   Header,
@@ -27,5 +28,6 @@ export {
   BlockNumber,
   Jackpot,
   AccountSelector,
-  NextDraw
+  NextDraw,
+  BetForm
 };

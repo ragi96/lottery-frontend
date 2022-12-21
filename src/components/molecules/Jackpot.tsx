@@ -7,13 +7,6 @@ import styled from 'styled-components';
 
 const JackpotWrapper = styled('div')`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
 `;
 
 interface JackpotProps {
@@ -29,6 +22,7 @@ export default function Jackpot(props: JackpotProps) {
   const fetchJackpot = useCallback(async () => {
     const gasLimit = 4000000000000;
     const value = 0;
+
     if (accountPair !== null && contract !== null && accountPair !== false && accountPair !== '') {
       const { result, output } = await contract.query.getJackpot(accountPair.address, { value, gasLimit });
       if (result.isOk) {
@@ -46,7 +40,7 @@ export default function Jackpot(props: JackpotProps) {
   useEffect(() => {
     const id = setInterval(timer, 1000);
     return () => clearInterval(id);
-  }, []);
+  }, [jackpotTimer]);
 
   useEffect(() => {
     fetchJackpot();

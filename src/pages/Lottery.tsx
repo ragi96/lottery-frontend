@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Wrapper, Heading, Text, BlockNumber, Jackpot, AccountSelector, NextDraw } from '../components/';
+import { Wrapper, Heading, Text, AccountSelector, BetForm } from '../components/';
 import { Container, Row, Col } from 'react-grid-system';
 import { ApiContextProvider, useApi, ContractContextProvider, useContract } from '../context/';
+import LotteryHeader from '../components/organisms/LotteryHeader';
 
 function Main() {
   const [accountAddress, setAccountAddress] = useState('');
-  const { keyring, keyringState } = useApi();
+  const [color, setColor] = useState('');
+  const { keyring } = useApi();
   const { contract } = useContract();
 
   if (keyring === null) {
@@ -16,15 +18,13 @@ function Main() {
     return null;
   }
 
-  const accountPair = accountAddress && keyringState === 'LOADED' && keyring.getPair(accountAddress);
+  const accountPair = accountAddress && keyring.getPair(accountAddress);
 
   return (
     <Wrapper>
       <Container role={'lottery'}>
         <Row direction="row">
-          <BlockNumber />
-          <Jackpot accountPair={accountPair} />
-          <NextDraw accountPair={accountPair} />
+          <LotteryHeader accountPair={accountPair} />
         </Row>
         <Row direction="row">
           <Col sm={12} md={6}>
@@ -33,6 +33,11 @@ function Main() {
           </Col>
           <Col sm={12} md={6}>
             <AccountSelector setAccountAddress={setAccountAddress} />
+          </Col>
+        </Row>
+        <Row direction="row">
+          <Col sm={12} md={6}>
+            <BetForm accountPair={accountPair} color={color} setColor={setColor} />
           </Col>
         </Row>
       </Container>

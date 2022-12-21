@@ -7,12 +7,6 @@ import styled from 'styled-components';
 
 const NextDrawStyled = styled('div')`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: -100px;
-  right: 25px;
-  z-index: 1;
 `;
 
 interface NextDrawProps {
