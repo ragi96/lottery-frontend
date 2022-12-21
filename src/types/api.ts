@@ -1,5 +1,4 @@
-import { ApiPromise } from '@polkadot/api';
-import { KeyringInstance } from '@polkadot/keyring/types';
+import { ApiPromise, Keyring } from '@polkadot/api';
 import { DefinitionRpc, DefinitionRpcSub, RegistryTypes } from '@polkadot/types/types';
 
 export enum ApiActionTypes {
@@ -36,17 +35,17 @@ export interface LoadKeyringAction {
 
 export interface SetKeyringAction {
   type: ApiActionTypes.SET_KEYRING;
-  payload: KeyringInstance;
+  payload: Keyring;
 }
 
 export interface LoadedKeyringAction {
   type: ApiActionTypes.LOADED_KEYRING;
-  payload: KeyringInstance;
+  payload: Keyring;
 }
 
 export interface KeyringErrorAction {
   type: ApiActionTypes.KEYRING_ERROR;
-  keyring: KeyringInstance | null;
+  keyring: Keyring | null;
   keyringState: string;
 }
 
@@ -64,7 +63,7 @@ export interface ApiState {
   socket: string;
   jsonRpc: Record<string, Record<string, DefinitionRpc | DefinitionRpcSub>>;
   types: RegistryTypes;
-  keyring: KeyringInstance | null;
+  keyring: Keyring | null;
   keyringState: string | null;
   api: ApiPromise | null;
   apiState: string | null;

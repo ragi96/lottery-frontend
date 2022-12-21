@@ -1,20 +1,20 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useReducer, useContext, useEffect } from 'react';
 import { Reducer } from 'redux';
 import jsonrpc from '@polkadot/types/interfaces/jsonrpc';
 
-import { ApiPromise, WsProvider } from '@polkadot/api';
+import { ApiPromise, WsProvider, Keyring } from '@polkadot/api';
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import keyring from '@polkadot/ui-keyring';
 import { ApiActionTypes, ApiStateActions, ApiState } from '../types/api';
+import { AnyAction } from '@reduxjs/toolkit';
 
 import config from '../config';
-import { KeyringInstance } from '@polkadot/keyring/types';
 
 export interface ApiContextType {
   api: ApiPromise | null;
   apiState: string | null;
   apiError: string | null;
-  keyring: KeyringInstance | null;
+  keyring: Keyring | null;
   keyringState: string | null;
 }
 
@@ -63,10 +63,9 @@ const reducer: Reducer<ApiState> = (state = initialState, action: ApiStateAction
   }
 };
 
-let loadAccts = false;
-const loadAccounts = (state: ApiState, dispatch: any) => {
+const loadAccounts = (state: ApiState, dispatch: React.Dispatch<AnyAction>) => {
+  dispatch({ type: ApiActionTypes.LOAD_KEYRING });
   const asyncLoadAccounts = async () => {
-    dispatch({ type: ApiActionTypes.LOAD_KEYRING });
     try {
       await web3Enable(config.APP_NAME);
       let allAccounts = await web3Accounts();
@@ -75,26 +74,17 @@ const loadAccounts = (state: ApiState, dispatch: any) => {
         meta: { ...meta, name: `${meta.name} (${meta.source})` }
       }));
       keyring.loadAll({ isDevelopment: config.DEVELOPMENT_KEYRING }, allAccounts);
-      loadAccts = true;
       dispatch({ type: ApiActionTypes.LOADED_KEYRING, payload: keyring });
     } catch (e) {
       console.log(e);
       dispatch({ type: ApiActionTypes.LOADED_KEYRING, payload: keyring });
     }
   };
-  const { keyringState } = state;
-  // If `keyringState` is not null `asyncLoadAccounts` is running.
-  if (keyringState) return;
-  // If `loadAccts` is true, the `asyncLoadAccounts` has been run once.
-  if (loadAccts) {
-    return dispatch({ type: ApiActionTypes.LOADED_KEYRING, payload: keyring });
-  }
   asyncLoadAccounts();
 };
 
-const connect = (state: ApiState, dispatch: any) => {
+const connect = (state: ApiState, dispatch: React.Dispatch<AnyAction>) => {
   const { apiState, socket, jsonRpc, types } = state;
-  // We only want this function to be performed once
   if (apiState) return;
 
   dispatch({ type: ApiActionTypes.CONNECT_INIT });
@@ -102,10 +92,8 @@ const connect = (state: ApiState, dispatch: any) => {
   const provider = new WsProvider(socket);
   const _api = new ApiPromise({ provider, types, rpc: jsonRpc });
 
-  // Set listeners for disconnection and reconnection event.
   _api.on('connected', () => {
     dispatch({ type: ApiActionTypes.CONNECT, payload: _api });
-    // `ready` event is not emitted upon reconnection and is checked explicitly here.
     _api.isReady.then(() => dispatch({ type: ApiActionTypes.CONNECT_SUCCESS }));
   });
   _api.on('ready', () => {
@@ -116,17 +104,24 @@ const connect = (state: ApiState, dispatch: any) => {
 
 export const ApiContext: React.Context<ApiContextType> = React.createContext({} as ApiContextType);
 
+let keyringLoadAll = false;
+
 const ApiContextProvider = (props: ApiContextProviderProps) => {
-  // filtering props and merge with default param value
   const initState = { ...initialState };
 
   const [state, dispatch] = useReducer(reducer, initState);
   connect(state, dispatch);
-  loadAccounts(state, dispatch);
+  useEffect(() => {
+    const { apiState, keyringState } = state;
+    if (apiState === 'READY' && !keyringState && !keyringLoadAll) {
+      keyringLoadAll = true;
+      loadAccounts(state, dispatch);
+    }
+  }, [state, dispatch]);
 
   return <ApiContext.Provider value={state}>{props.children}</ApiContext.Provider>;
 };
 
-const useApi = () => ({ ...useContext(ApiContext) });
+const useApi = () => useContext(ApiContext);
 
 export { ApiContextProvider, useApi };

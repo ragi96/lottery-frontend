@@ -1,11 +1,8 @@
 import React, { useReducer, useContext } from 'react';
-import { Reducer } from 'redux';
-
+import { Reducer, AnyAction } from 'redux';
 import { useApi } from './ApiContext';
-
 import { ContractPromise } from '@polkadot/api-contract';
 import { ApiPromise } from '@polkadot/api';
-
 import { ContractActionTypes, ContractState, ContractStateActions } from '../types/contract';
 
 import config from '../config';
@@ -35,7 +32,7 @@ const reducer: Reducer<ContractState> = (state = initialState, action: ContractS
 
 import ABI from '../context/abi.json';
 
-const loadContract = (state: ContractState, dispatch: any, api: ApiPromise) => {
+const loadContract = (state: ContractState, dispatch: React.Dispatch<AnyAction>, api: ApiPromise) => {
   const { contractState } = state;
   if (api) {
     if (contractState) return;
@@ -72,6 +69,6 @@ const ContractContextProvider = (props: ContractContextProviderProps) => {
   return <ContractContext.Provider value={state}>{props.children}</ContractContext.Provider>;
 };
 
-const useContract = () => ({ ...useContext(ContractContext) });
+const useContract = () => useContext(ContractContext);
 
 export { ContractContextProvider, useContract };

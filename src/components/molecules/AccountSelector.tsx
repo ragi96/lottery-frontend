@@ -125,7 +125,7 @@ function Main(props: AccountSelectorProps) {
         <DropDownListContainer>
           <DropDownList>
             {keyringOptions.map((option: KeyType) => (
-              <ListItem onClick={onOptionClicked(option.key)} key={option.value}>
+              <ListItem onClick={onOptionClicked(option.key)} key={option.key}>
                 <ListItemIcon value={option.value} size={24} theme={'substrate'} />
                 {option.value}
               </ListItem>

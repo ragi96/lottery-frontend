@@ -5,26 +5,25 @@ import { ApiContextProvider, useApi, ContractContextProvider, useContract } from
 import LotteryHeader from '../components/organisms/LotteryHeader';
 
 function Main() {
-  const [accountAddress, setAccountAddress] = useState('');
   const [color, setColor] = useState('');
-  const { keyring } = useApi();
+  const { api, keyring } = useApi();
   const { contract } = useContract();
-
-  if (keyring === null) {
+  const [accountAddress, setAccountAddress] = useState('');
+  if (keyring === null || api === null || contract === null) {
     return null;
   }
 
-  if (contract === null) {
+  if (accountAddress === '') {
+    setAccountAddress(keyring.getPairs()[0].address);
     return null;
   }
 
-  const accountPair = accountAddress && keyring.getPair(accountAddress);
-
+  const accountPair = keyring.getPair(accountAddress);
   return (
     <Wrapper>
       <Container role={'lottery'}>
         <Row direction="row">
-          <LotteryHeader accountPair={accountPair} />
+          <LotteryHeader accountAddress={accountAddress.toString()} />
         </Row>
         <Row direction="row">
           <Col sm={12} md={6}>

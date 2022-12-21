@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Text } from '..';
 import { useContract } from '../../context';
 import { u128 } from '@polkadot/types';
-import { KeyringPair } from '@polkadot/keyring/types';
 import styled from 'styled-components';
 
 const JackpotWrapper = styled('div')`
@@ -10,28 +9,28 @@ const JackpotWrapper = styled('div')`
 `;
 
 interface JackpotProps {
-  accountPair: KeyringPair | null | false | '';
+  accountAddress: string;
 }
 
 export default function Jackpot(props: JackpotProps) {
   const { contract } = useContract();
   const [jackpot, setJackpot] = useState('');
   const [jackpotTimer, setJackpotTimer] = useState(0);
-  const { accountPair } = props;
+  const { accountAddress } = props;
 
   const fetchJackpot = useCallback(async () => {
     const gasLimit = 4000000000000;
     const value = 0;
 
-    if (accountPair !== null && contract !== null && accountPair !== false && accountPair !== '') {
-      const { result, output } = await contract.query.getJackpot(accountPair.address, { value, gasLimit });
+    if (contract !== null && accountAddress !== '') {
+      const { result, output } = await contract.query.getJackpot(accountAddress, { value, gasLimit });
       if (result.isOk) {
         if (output instanceof u128) {
           setJackpot(output.toString());
         }
       }
     }
-  }, [accountPair, contract]);
+  }, [accountAddress, contract]);
 
   const timer = () => {
     setJackpotTimer((time) => time + 1);
@@ -44,7 +43,7 @@ export default function Jackpot(props: JackpotProps) {
 
   useEffect(() => {
     fetchJackpot();
-  }, [contract, accountPair, jackpotTimer]);
+  }, [contract, accountAddress, jackpotTimer]);
 
   return (
     <JackpotWrapper role={'jackpot'}>

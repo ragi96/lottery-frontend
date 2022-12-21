@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { BlockNumber, Jackpot, NextDraw } from '../';
-import { KeyringPair } from '@polkadot/keyring/types';
 
 const HeaderWrapper = styled.div`
   position: absolute;
@@ -16,17 +15,17 @@ const FlexWrapper = styled.div`
 `;
 
 interface KeyringProps {
-  accountPair: KeyringPair | '';
+  accountAddress: string;
 }
 
 export default function LotteryHeader(props: KeyringProps) {
-  const { accountPair } = props;
+  const { accountAddress } = props;
   return (
     <HeaderWrapper role={'lottery-header'}>
       <FlexWrapper role={'flex-lottery-header'}>
         <BlockNumber />
-        <Jackpot accountPair={accountPair} />
-        <NextDraw accountPair={accountPair} />
+        <Jackpot accountAddress={accountAddress} />
+        <NextDraw accountAddress={accountAddress} />
       </FlexWrapper>
     </HeaderWrapper>
   );
