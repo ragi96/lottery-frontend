@@ -67,7 +67,7 @@ interface AccountSelectorProps {
 
 interface KeyType {
   key: string;
-  value: string;
+  name: string;
   icon: string;
 }
 
@@ -82,7 +82,7 @@ function Main(props: AccountSelectorProps) {
   if (keyring !== null) {
     keyringOptions = keyring.getPairs().map((account) => ({
       key: account.address,
-      value: account.address,
+      name: account.meta.name as string,
       icon: 'user'
     }));
     initialAddress = keyringOptions.length > 0 ? keyringOptions[0].key : '';
@@ -109,7 +109,7 @@ function Main(props: AccountSelectorProps) {
     return null;
   }
 
-  const selectedAccount = keyringOptions.filter((a: KeyType) => a.value === accountSelected)[0];
+  const selectedAccount = keyringOptions.filter((a: KeyType) => a.key === accountSelected)[0];
 
   if (selectedAccount === undefined) {
     return null;
@@ -118,16 +118,16 @@ function Main(props: AccountSelectorProps) {
   return (
     <DropDownContainer role={'account-selector'}>
       <DropDownHeader onClick={toggling}>
-        <ListItemIcon value={selectedAccount.value} size={24} theme={'polkadot'} />
-        <HeaderSpan>{selectedAccount.value}</HeaderSpan>
+        <ListItemIcon value={selectedAccount.key} size={24} theme={'polkadot'} />
+        <HeaderSpan>{selectedAccount.name}</HeaderSpan>
       </DropDownHeader>
       {isOpen && (
         <DropDownListContainer>
           <DropDownList>
             {keyringOptions.map((option: KeyType) => (
               <ListItem onClick={onOptionClicked(option.key)} key={option.key}>
-                <ListItemIcon value={option.value} size={24} theme={'substrate'} />
-                {option.value}
+                <ListItemIcon value={option.key} size={24} theme={'substrate'} />
+                {option.name}
               </ListItem>
             ))}
           </DropDownList>

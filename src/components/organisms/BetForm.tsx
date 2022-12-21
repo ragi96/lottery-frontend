@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { hexToU8a, hexAddPrefix } from '@polkadot/util';
 import { ContractPromise } from '@polkadot/api-contract';
 import { web3FromSource } from '@polkadot/extension-dapp';
+import keyring from '@polkadot/ui-keyring';
 
 const BetFormStyled = styled('div')`
   width: 120px;
@@ -14,14 +15,14 @@ const BetFormStyled = styled('div')`
 `;
 
 interface BetFormProps {
-  accountPair: KeyringPair;
+  accountAddress: string;
   color: string;
   setColor: (color: string) => void;
 }
 
 export default function BetForm(props: BetFormProps) {
   const { contract } = useContract();
-  const { accountPair, setColor, color } = props;
+  const { accountAddress, setColor, color } = props;
   const setInput = function (e: React.ChangeEvent<HTMLInputElement>) {
     setColor(e.target.value);
   };
@@ -69,10 +70,10 @@ export default function BetForm(props: BetFormProps) {
 
   const submit = async function (e: any) {
     e.preventDefault();
-    if (contract === null || accountPair === null || color === '') {
+    if (contract === null || accountAddress === '' || color === '') {
       return;
     }
-    sendTx(accountPair, contract);
+    sendTx(keyring.getPair(accountAddress), contract);
   };
 
   return (

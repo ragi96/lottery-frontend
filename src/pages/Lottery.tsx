@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Wrapper, Heading, Text, AccountSelector, BetForm } from '../components/';
 import { Container, Row, Col } from 'react-grid-system';
 import { ApiContextProvider, useApi, ContractContextProvider, useContract } from '../context/';
@@ -9,21 +9,18 @@ function Main() {
   const { api, keyring } = useApi();
   const { contract } = useContract();
   const [accountAddress, setAccountAddress] = useState('');
-  if (keyring === null || api === null || contract === null) {
-    return null;
-  }
 
-  if (accountAddress === '') {
-    setAccountAddress(keyring.getPairs()[0].address);
-    return null;
-  }
+  useEffect(() => {
+    if (keyring !== null) {
+      setAccountAddress(keyring.getPairs()[0].address || '');
+    }
+  }, [keyring, api, contract, contract]);
 
-  const accountPair = keyring.getPair(accountAddress);
   return (
     <Wrapper>
       <Container role={'lottery'}>
         <Row direction="row">
-          <LotteryHeader accountAddress={accountAddress.toString()} />
+          <LotteryHeader accountAddress={accountAddress} />
         </Row>
         <Row direction="row">
           <Col sm={12} md={6}>
@@ -36,7 +33,7 @@ function Main() {
         </Row>
         <Row direction="row">
           <Col sm={12} md={6}>
-            <BetForm accountPair={accountPair} color={color} setColor={setColor} />
+            <BetForm accountAddress={accountAddress} color={color} setColor={setColor} />
           </Col>
         </Row>
       </Container>
@@ -47,11 +44,9 @@ function Main() {
 export default function Lottery() {
   return (
     <React.Fragment>
-      <ApiContextProvider>
-        <ContractContextProvider>
-          <Main />
-        </ContractContextProvider>
-      </ApiContextProvider>
+      <ContractContextProvider>
+        <Main />
+      </ContractContextProvider>
     </React.Fragment>
   );
 }

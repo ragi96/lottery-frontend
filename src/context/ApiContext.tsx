@@ -1,12 +1,11 @@
 import React, { useReducer, useContext, useEffect } from 'react';
-import { Reducer } from 'redux';
+import { Reducer, AnyAction } from 'redux';
 import jsonrpc from '@polkadot/types/interfaces/jsonrpc';
 
 import { ApiPromise, WsProvider, Keyring } from '@polkadot/api';
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import keyring from '@polkadot/ui-keyring';
 import { ApiActionTypes, ApiStateActions, ApiState } from '../types/api';
-import { AnyAction } from '@reduxjs/toolkit';
 
 import config from '../config';
 
