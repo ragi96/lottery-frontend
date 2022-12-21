@@ -23,7 +23,7 @@ export default function LotteryHeader(props: KeyringProps) {
   const { accountPair } = props;
   return (
     <HeaderWrapper role={'lottery-header'}>
-      <FlexWrapper>
+      <FlexWrapper role={'flex-lottery-header'}>
         <BlockNumber />
         <Jackpot accountPair={accountPair} />
         <NextDraw accountPair={accountPair} />

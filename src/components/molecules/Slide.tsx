@@ -1,3 +1,4 @@
+import React, { useCallback } from 'react';
 import { animated, useSpring } from '@react-spring/web';
 import { Anim, Heading, Text, Button } from '..';
 import { Container, Row, Col } from 'react-grid-system';
@@ -55,6 +56,13 @@ export default function Slide(props: SlideProps) {
     }
   });
 
+  const move = useCallback(
+    (num: number) => () => {
+      moveSlide(num);
+    },
+    []
+  );
+
   return (
     <animated.div
       role={'slide'}
@@ -69,7 +77,7 @@ export default function Slide(props: SlideProps) {
         zIndex: Math.abs(Math.abs(offsetFromMiddle) - 2)
       }}
     >
-      <Container onClick={() => moveSlide(offsetFromMiddle)}>
+      <Container onClick={move(offsetFromMiddle)}>
         <Row direction={reverse ? 'row-reverse' : 'row'}>
           <Col sm={12} md={6}>
             <Heading headingLevel="h1">{title}</Heading>
