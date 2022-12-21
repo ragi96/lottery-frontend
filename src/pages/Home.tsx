@@ -22,10 +22,8 @@ export default class Home extends Component {
     config: config.gentle
   };
 
-  content = HomeContent;
-
   render() {
-    const slides = this.content.map((slide: SlideContent) => {
+    const slides = HomeContent.map((slide: SlideContent) => {
       return {
         key: slide.key,
         title: slide.title,

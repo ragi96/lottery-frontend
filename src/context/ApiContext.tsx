@@ -6,7 +6,7 @@ import queryString from 'query-string';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import keyring from '@polkadot/ui-keyring';
-import { ApiActionTypes, ApiStateActions, ApiState } from '../redux/actiontypes/api';
+import { ApiActionTypes, ApiStateActions, ApiState } from '../types/api';
 
 import config from '../config';
 import { KeyringInstance } from '@polkadot/keyring/types';

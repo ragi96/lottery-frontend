@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
+import React, { useState, useEffect, Dispatch, SetStateAction, useCallback } from 'react';
 import { useApi } from '../../context';
 import styled from 'styled-components';
 import { ApiPromise } from '@polkadot/api';
@@ -95,7 +95,9 @@ function Main(props: AccountSelectorProps) {
     }
   }, [setAccountAddress, initialAddress]);
 
-  const toggling = () => setIsOpen(!isOpen);
+  const toggling = useCallback(() => {
+    setIsOpen(!isOpen);
+  }, [isOpen]);
 
   const onOptionClicked = (value: string) => () => {
     setAccountAddress(value);
@@ -123,7 +125,7 @@ function Main(props: AccountSelectorProps) {
         <DropDownListContainer>
           <DropDownList>
             {keyringOptions.map((option: KeyType) => (
-              <ListItem onClick={onOptionClicked(option.key)} key={Math.random()}>
+              <ListItem onClick={onOptionClicked(option.key)} key={option.value}>
                 <ListItemIcon value={option.value} size={24} theme={'substrate'} />
                 {option.value}
               </ListItem>

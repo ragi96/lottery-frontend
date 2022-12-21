@@ -7,7 +7,7 @@ import { useApi } from './ApiContext';
 import { ContractPromise } from '@polkadot/api-contract';
 import { ApiPromise } from '@polkadot/api';
 
-import { ContractActionTypes, ContractState, ContractStateActions } from '../redux/actiontypes/contract';
+import { ContractActionTypes, ContractState, ContractStateActions } from '../types/contract';
 
 import config from '../config';
 

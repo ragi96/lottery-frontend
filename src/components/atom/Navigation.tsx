@@ -1,3 +1,4 @@
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 
 const NavigationButtons = styled.div`
@@ -28,11 +29,20 @@ interface NavigationProps {
 }
 
 function Navigation(props: NavigationProps) {
+  const { moveSlide } = props;
+
+  const move = useCallback(
+    (num: number) => () => {
+      moveSlide(num);
+    },
+    []
+  );
+
   return (
     <NavigationButtons role="slider-navigation">
-      <NavBtn onClick={() => props.moveSlide(-1)} />
+      <NavBtn onClick={move(-1)} />
       <Rotate>
-        <NavBtn onClick={() => props.moveSlide(1)} />
+        <NavBtn onClick={move(1)} />
       </Rotate>
     </NavigationButtons>
   );
