@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { useContract } from '../../context';
-import { Text, Heading, Button, Colorfield } from '..';
+import { Text, Heading, Button, Colorfield, Alert, ExternalLink } from '..';
 import styled from 'styled-components';
 import { Row, Col } from 'react-grid-system';
 import { HexColorPicker } from 'react-colorful';
@@ -24,15 +24,28 @@ const HexColorPickerStyled = styled(HexColorPicker)`
   }
 `;
 
+const StyledLink = styled.a`
+  color: #000000;
+  text-decoration: underline;
+  cursor: pointer;
+`;
+
 interface BetFormProps {
   accountAddress: string;
   color: string;
   setColor: (color: string) => void;
 }
 
+interface StatusMessages {
+  text: string;
+  txHash: string;
+  type: 'success' | 'error' | 'none';
+}
+
 export default function BetForm(props: BetFormProps) {
   const { contract } = useContract();
   const { accountAddress, setColor, color } = props;
+  const [status, setStatus] = useState({ text: '', txHash: '', type: 'none' } as StatusMessages);
 
   const createUInt8Array = (): Uint8Array => {
     const colorArray = new Uint8Array(32);
@@ -60,8 +73,24 @@ export default function BetForm(props: BetFormProps) {
   };
 
   const handleTxResult = (result: ISubmittableResult) => {
-    console.log(result);
+    if (result.status.isInBlock) {
+      if (result.events !== undefined) {
+        const lastEvent = result.events[result.events.length - 1];
+        if (lastEvent.event.data.method === 'ExtrinsicSuccess') {
+          setStatus({
+            text: `😉 Transaction included at blockHash`,
+            type: 'success',
+            txHash: result.status.asInBlock.toString()
+          });
+        } else {
+          setStatus({ text: `😞 Transaction Failed: Color already filled`, type: 'error', txHash: '' });
+        }
+      }
+    }
   };
+
+  const handleTxError = (err: any) =>
+    setStatus({ text: `😞 Transaction Failed: ${err.toString()}`, type: 'error', txHash: '' });
 
   const sendTx = async function (accountPair: KeyringPair, contract: ContractPromise) {
     const value = 1000000;
@@ -76,10 +105,11 @@ export default function BetForm(props: BetFormProps) {
           .registerBet({ storageDepositLimit, gasLimit, value }, colorArray)
           .signAndSend(accountPair.address, { signer: signer }, (result) => {
             handleTxResult(result);
-          });
+          })
+          .catch((err) => handleTxError(err));
       }
     } else {
-      contract.tx
+      await contract.tx
         .registerBet({ storageDepositLimit, gasLimit, value }, colorArray)
         .signAndSend(accountPair, (result) => {
           handleTxResult(result);
@@ -97,6 +127,20 @@ export default function BetForm(props: BetFormProps) {
     },
     [color, accountAddress, contract]
   );
+
+  let messageLink;
+  if (status.txHash !== '') {
+    messageLink = (
+      <StyledLink
+        target={'_blank'}
+        href={
+          'https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fsubstrate.ragilab.science#/explorer/query/' + status.txHash
+        }
+      >
+        Check In The Explorer
+      </StyledLink>
+    );
+  }
 
   return (
     <BetFormStyled role={'bet-form'}>
@@ -118,10 +162,16 @@ export default function BetForm(props: BetFormProps) {
           <Text text={'Your Pick in Hex: ' + color} />
         </Col>
       </Row>
-
       <Row>
         <Button label={'Submit Bet'} primary={false} onClick={submit} />
       </Row>
+      <Alert type={status.type}>
+        <div>
+          <Text text={status.text} />
+          {messageLink}
+        </div>
+      </Alert>
+      ;
     </BetFormStyled>
   );
 }
