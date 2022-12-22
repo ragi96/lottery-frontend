@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Slide, Wrapper, Navigation } from '..';
-import { SlideContent } from '../../types/SlideContent';
+import { SlideContent } from '../../types/utils';
 
 function mod(a: number, b: number) {
   return ((a % b) + b) % b;

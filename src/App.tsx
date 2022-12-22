@@ -14,7 +14,7 @@ setConfiguration({
   containerWidths: [850, 1064],
   defaultScreenClass: 'sm',
   gridColumns: 12,
-  gutterWidth: 54,
+  gutterWidth: 30,
   maxScreenClass: 'md'
 });
 

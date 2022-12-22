@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { animated, useSpring } from '@react-spring/web';
-import { Anim, Heading, Text, Button } from '..';
+import { Anim, Heading, Text, StyledLink } from '..';
 import { Container, Row, Col } from 'react-grid-system';
 
 interface SlideProps {
@@ -83,7 +83,7 @@ export default function Slide(props: SlideProps) {
             <Heading headingLevel="h1">{title}</Heading>
             <Text text={text1} />
             <Text text={text2} />
-            <Button to={link} label={label} primary={true} />
+            <StyledLink to={link} label={label} primary={true} />
           </Col>
           <Col sm={12} md={6}>
             <Anim />

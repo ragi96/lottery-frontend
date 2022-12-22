@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { JustChildProps } from '../../types/JustChild';
+import { JustChildProps } from '../../types/utils';
 
 const Wrap = styled.div`
   width: calc(100% - 4px);

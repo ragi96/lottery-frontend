@@ -20,29 +20,29 @@ test('logo exists', () => {
   expect(getByRole('logo')).toBeInTheDocument();
 });
 
-test('button exists', () => {
+test('link exists', () => {
   const { getByRole } = render(
     <BrowserRouter>
       <Header />
     </BrowserRouter>
   );
-  expect(getByRole('button')).toBeInTheDocument();
+  expect(getByRole('link')).toBeInTheDocument();
 });
 
-test('button is link to lottery', () => {
+test('link leads to lottery', () => {
   const { getByRole } = render(
     <BrowserRouter>
       <Header />
     </BrowserRouter>
   );
-  expect(getByRole('button')).toHaveAttribute('href', '/lottery');
+  expect(getByRole('link')).toHaveAttribute('href', '/lottery');
 });
 
-test('button is primary', () => {
+test('link is primary', () => {
   const { getByRole } = render(
     <BrowserRouter>
       <Header />
     </BrowserRouter>
   );
-  expect(getByRole('button')).toHaveStyle('border: solid 1px #ff0;');
+  expect(getByRole('link')).toHaveStyle('border: solid 1px #ff0');
 });

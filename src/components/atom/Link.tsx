@@ -1,13 +1,12 @@
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { ButtonStyleProps } from '../../types/utils';
+import styled from 'styled-components';
 
-const Btn = styled.button`
-  cursor: pointer;
+const Btn = styled(Link)`
   gap: 4px;
   border-radius: 40px;
   padding: 8px 12px;
   text-decoration: none;
-  background-color: transparent;
   border: ${(props: ButtonStyleProps) => (props.primary ? 'solid 1px #ff0' : 'solid 1px #00ffff')};
   font-size: ${(props: ButtonStyleProps) => (props.primary ? '20px' : '14px')};
   &:hover {
@@ -22,16 +21,16 @@ const Btn = styled.button`
   }
 `;
 
-export default function Button(props: ButtonProps) {
+export default function StyledLink(props: LinkProps) {
   return (
-    <Btn role="button" onClick={props.onClick} primary={props.primary}>
+    <Btn role="link" to={props.to} primary={props.primary}>
       <span>{props.label}</span>
     </Btn>
   );
 }
 
-interface ButtonProps {
+interface LinkProps {
   primary: boolean;
+  to: string;
   label: string;
-  onClick: (e: React.MouseEvent) => Promise<void>;
 }

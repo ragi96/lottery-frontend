@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { VerticalCarousel } from '../components';
 import { config } from '@react-spring/web';
-import { SlideContent } from '../types/SlideContent';
+import { SlideContent } from '../types/utils';
 import styled from 'styled-components';
 import HomeContent from './HomeContent.json';
 

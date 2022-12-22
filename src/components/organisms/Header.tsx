@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Logo, Button } from '../';
+import { Logo, StyledLink } from '../';
 
 const Wrapper = styled.header`
   width: 100%;
@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <Wrapper role="header">
       <Logo />
-      <Button primary={true} to="/lottery" label="Go To Lottery" />
+      <StyledLink primary={true} to="/lottery" label="Go To Lottery" />
     </Wrapper>
   );
 }

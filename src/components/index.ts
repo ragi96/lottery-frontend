@@ -1,6 +1,6 @@
 import Header from './organisms/Header';
 import Logo from './atom/Logo';
-import Button from './atom/Button';
+import StyledLink from './atom/Link';
 import Text from './atom/Text';
 import Heading from './atom/Heading';
 import Slide from './molecules/Slide';
@@ -15,11 +15,12 @@ import NextDraw from './molecules/NextDraw';
 import BetForm from './organisms/BetForm';
 import Loader from './atom/Loader';
 import LoadingCircle from './atom/LoadingCircle';
+import Button from './atom/Button';
 
 export {
   Header,
   Logo,
-  Button,
+  StyledLink,
   Text,
   Heading,
   Slide,
@@ -33,5 +34,6 @@ export {
   NextDraw,
   BetForm,
   Loader,
-  LoadingCircle
+  LoadingCircle,
+  Button
 };

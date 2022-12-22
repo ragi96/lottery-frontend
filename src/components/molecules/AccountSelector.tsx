@@ -6,6 +6,9 @@ import Identicon from '@polkadot/react-identicon';
 
 const DropDownContainer = styled('div')`
   width: 100%;
+  max-width: 340px;
+  right: 0;
+  position: absolute;
 `;
 
 const DropDownHeader = styled('div')`

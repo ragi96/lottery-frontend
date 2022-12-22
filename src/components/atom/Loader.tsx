@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { LoadingCircle } from '..';
-import { JustChildProps } from '../../types/JustChild';
+import { JustChildProps } from '../../types/utils';
 
 const Dimmer = styled.div`
   width: 100%;

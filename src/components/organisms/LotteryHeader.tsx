@@ -3,7 +3,7 @@ import { BlockNumber, Jackpot, NextDraw } from '../';
 
 const HeaderWrapper = styled.div`
   position: absolute;
-  width: 100%;
+  width: calc(100% - 15px);
   top: -100px;
 `;
 
