@@ -1,6 +1,7 @@
 import Header from './organisms/Header';
 import Logo from './atom/Logo';
-import StyledLink from './atom/Link';
+import ExternalLink from './atom/ExternalLink';
+import ButtonLink from './atom/ButtonLink';
 import Text from './atom/Text';
 import Heading from './atom/Heading';
 import Slide from './molecules/Slide';
@@ -16,11 +17,12 @@ import BetForm from './organisms/BetForm';
 import Loader from './atom/Loader';
 import LoadingCircle from './atom/LoadingCircle';
 import Button from './atom/Button';
+import Colorfield from './atom/Colorfield';
 
 export {
   Header,
   Logo,
-  StyledLink,
+  ExternalLink,
   Text,
   Heading,
   Slide,
@@ -35,5 +37,7 @@ export {
   BetForm,
   Loader,
   LoadingCircle,
-  Button
+  Button,
+  Colorfield,
+  ButtonLink
 };

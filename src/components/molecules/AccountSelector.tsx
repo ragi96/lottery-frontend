@@ -8,7 +8,9 @@ const DropDownContainer = styled('div')`
   width: 100%;
   max-width: 340px;
   right: 0;
+  background-color: #171712;
   position: absolute;
+  z-index: 1;
 `;
 
 const DropDownHeader = styled('div')`

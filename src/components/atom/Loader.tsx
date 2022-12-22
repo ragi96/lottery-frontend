@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { LoadingCircle } from '..';
 import { JustChildProps } from '../../types/utils';

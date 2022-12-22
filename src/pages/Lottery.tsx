@@ -5,7 +5,7 @@ import { useApi, ContractContextProvider, useContract } from '../context/';
 import LotteryHeader from '../components/organisms/LotteryHeader';
 
 function Main() {
-  const [color, setColor] = useState('');
+  const [color, setColor] = useState('#F0F000');
   const { api, keyring } = useApi();
   const { contract } = useContract();
   const [accountAddress, setAccountAddress] = useState('');
@@ -42,7 +42,7 @@ function Main() {
           </Col>
         </Row>
         <Row direction="row">
-          <Col sm={12} md={6}>
+          <Col sm={12} md={12}>
             <BetForm accountAddress={accountAddress} color={color} setColor={setColor} />
           </Col>
         </Row>

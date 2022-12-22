@@ -1,17 +1,27 @@
 import React, { useCallback } from 'react';
-import { KeyringPair } from '@polkadot/keyring/types';
+
 import { useContract } from '../../context';
-import { Text, Button } from '..';
+import { Text, Heading, Button, Colorfield } from '..';
 import styled from 'styled-components';
-import { hexToU8a, hexAddPrefix } from '@polkadot/util';
+import { Row, Col } from 'react-grid-system';
+import { HexColorPicker } from 'react-colorful';
 import { ContractPromise } from '@polkadot/api-contract';
 import { web3FromSource } from '@polkadot/extension-dapp';
-import { HexColorPicker, HexColorInput } from 'react-colorful';
+import { KeyringPair } from '@polkadot/keyring/types';
 import keyring from '@polkadot/ui-keyring';
+import { hexToU8a, hexAddPrefix } from '@polkadot/util';
+import { ISubmittableResult } from '@polkadot/types/types';
 
 const BetFormStyled = styled('div')`
-  height: 20px;
+  width: 100%;
   font-size: 1.3rem;
+`;
+
+const HexColorPickerStyled = styled(HexColorPicker)`
+  &.react-colorful {
+    width: 100%;
+    cursor: pointer;
+  }
 `;
 
 interface BetFormProps {
@@ -49,7 +59,7 @@ export default function BetForm(props: BetFormProps) {
     return injector.signer;
   };
 
-  const handleTxResult = (result: any) => {
+  const handleTxResult = (result: ISubmittableResult) => {
     console.log(result);
   };
 
@@ -90,10 +100,28 @@ export default function BetForm(props: BetFormProps) {
 
   return (
     <BetFormStyled role={'bet-form'}>
-      <Text text={'Your Color: '} />
-      <HexColorPicker color={color} onChange={setColor} />
-      <HexColorInput color={color} onChange={setColor} />
-      <Button label={'Submit Bet'} primary={false} onClick={submit} />
+      <Row>
+        <Col xs={12}>
+          <Heading headingLevel="h2">Use the color picker</Heading>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={6}>
+          <HexColorPickerStyled color={color} onChange={setColor} />
+        </Col>
+        <Col xs={6}>
+          <Colorfield color={color} />
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={6}>
+          <Text text={'Your Pick in Hex: ' + color} />
+        </Col>
+      </Row>
+
+      <Row>
+        <Button label={'Submit Bet'} primary={false} onClick={submit} />
+      </Row>
     </BetFormStyled>
   );
 }

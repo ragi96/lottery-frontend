@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Text } from '..';
 import { useContract } from '../../context';
 import { u32 } from '@polkadot/types';

@@ -29,7 +29,7 @@ const StyledHeading = styled.div.attrs<HeadingProps>(({ headingLevel }) => ({
   text-align: left;
   color: #fff;
   margin: 0;
-  margin-bottom: ${(props: HeadingProps) => (props.headingLevel === 'h1' ? '30px' : '0px')};
+  margin-bottom: ${(props: HeadingProps) => (props.headingLevel === 'h1' ? '30px' : '20px')};
   line-height: ${(props: HeadingProps) => (props.headingLevel === 'h1' ? '1.07em' : '1.22em')};
   font-size: ${(props: HeadingProps) => HandleHeadingSize(props)};
 `;
