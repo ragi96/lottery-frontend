@@ -14,3 +14,9 @@ export interface SlideContent {
   link: string;
   reverse: boolean;
 }
+
+export interface StatusMessages {
+  text: string;
+  txHash: string;
+  type: 'success' | 'error' | 'warning' | 'none';
+}

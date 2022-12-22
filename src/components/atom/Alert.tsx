@@ -1,6 +1,6 @@
-import React, { ReactElement, JSXElementConstructor, useState } from 'react';
+import React, { ReactElement, JSXElementConstructor, useState, useCallback } from 'react';
 import styled from 'styled-components';
-import ExternalLink from './ExternalLink';
+import { StatusMessages } from '../../types/utils';
 
 const AlertStyled = styled('div')`
   position: fixed;
@@ -12,8 +12,15 @@ const AlertStyled = styled('div')`
   border-radius: 0.25rem;
   max-width: 350px;
   z-index: 1;
-  background-color: ${(props: AlertStyledProps) => (props.type === 'success' ? '#00ffff' : '#ff3c00')};
-
+  background-color: ${(props: AlertStyledProps) => {
+    if (props.type === 'success') {
+      return '#00ffff';
+    } else if (props.type === 'error') {
+      return '#ff3c00';
+    } else {
+      return '#ffff00';
+    }
+  }};
   p {
     color: #000000;
   }
@@ -30,21 +37,26 @@ const StyledClose = styled('span')`
 
 interface AlertProps {
   children: ReactElement<any, string | JSXElementConstructor<any>>;
-  type: 'success' | 'error' | 'none';
+  type: 'success' | 'error' | 'warning' | 'none';
+  setStatus: (status: StatusMessages) => void;
 }
 
 interface AlertStyledProps {
-  type: 'success' | 'error';
+  type: 'success' | 'warning' | 'error';
 }
 
 export default function Alert(props: AlertProps) {
   const [isShow, setIsShow] = useState(true);
-  const { children, type } = props;
+  const { children, type, setStatus } = props;
 
   const handleClose = function (e: React.MouseEvent) {
     e.preventDefault();
     setIsShow(false);
+    setStatus({ text: '', txHash: '', type: 'none' });
+    setIsShow(true);
   };
+
+  const handleCloseCallback = useCallback(handleClose, []);
 
   if (!isShow || type === 'none') {
     return null;
@@ -52,7 +64,7 @@ export default function Alert(props: AlertProps) {
 
   return (
     <AlertStyled type={type}>
-      <StyledClose onClick={handleClose}>&times;</StyledClose>
+      <StyledClose onClick={handleCloseCallback}>&times;</StyledClose>
       {children}
     </AlertStyled>
   );
