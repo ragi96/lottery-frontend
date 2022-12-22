@@ -1,4 +1,4 @@
-import React, { ReactElement, JSXElementConstructor, useState, useCallback } from 'react';
+import React, { ReactElement, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { StatusMessages } from '../../types/utils';
 
@@ -36,7 +36,7 @@ const StyledClose = styled('span')`
 `;
 
 interface AlertProps {
-  children: ReactElement<any, string | JSXElementConstructor<any>>;
+  children: ReactElement;
   type: 'success' | 'error' | 'warning' | 'none';
   setStatus: (status: StatusMessages) => void;
 }
@@ -63,7 +63,7 @@ export default function Alert(props: AlertProps) {
   }
 
   return (
-    <AlertStyled type={type}>
+    <AlertStyled role={'alert-' + type} type={type}>
       <StyledClose onClick={handleCloseCallback}>&times;</StyledClose>
       {children}
     </AlertStyled>

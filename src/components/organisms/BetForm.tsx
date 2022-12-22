@@ -110,14 +110,15 @@ export default function BetForm(props: BetFormProps) {
           .signAndSend(accountPair.address, { signer: signer }, (result) => {
             handleTxResult(result);
           })
-          .catch((err: any) => handleTxError(err));
+          .catch((err: Error) => handleTxError(err));
       }
     } else {
       await contract.tx
         .registerBet({ storageDepositLimit, gasLimit, value }, colorArray)
         .signAndSend(accountPair, (result) => {
           handleTxResult(result);
-        });
+        })
+        .catch((err: Error) => handleTxError(err));
     }
   };
 
