@@ -16,6 +16,13 @@ const CenterWrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 350px;
+
+  p {
+    color: #ff0;
+    text-align: center;
+  }
 `;
 
 const PositionedLoadingCircle = styled.div`

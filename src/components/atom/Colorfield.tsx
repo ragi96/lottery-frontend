@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Hidden } from 'react-grid-system';
 
 const ColorfieldStyled = styled.div.attrs(({ color }) => ({
   style: {
@@ -12,7 +13,11 @@ const ColorfieldStyled = styled.div.attrs(({ color }) => ({
 `;
 
 export default function Colorfield(props: ColorfieldProps) {
-  return <ColorfieldStyled role={'colorfield'} color={props.color}></ColorfieldStyled>;
+  return (
+    <Hidden xs sm>
+      <ColorfieldStyled role={'colorfield'} color={props.color}></ColorfieldStyled>
+    </Hidden>
+  );
 }
 
 interface ColorfieldProps {

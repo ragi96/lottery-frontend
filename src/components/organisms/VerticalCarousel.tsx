@@ -20,15 +20,46 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
     newSlide: false
   };
 
+  touchStartY = 0;
+  touchEndY = 0;
+  waitHandle = false;
+
   componentDidMount = () => {
-    window.addEventListener('wheel', this.handleScroll, true);
+    window.addEventListener('wheel', this.handleWheel);
+    window.addEventListener('touchstart', this.handleTouchStart);
   };
 
-  handleScroll = (e: WheelEvent) => {
-    if (e.deltaY > 0) {
-      this.moveSlide(-1);
-    } else {
+  handleTouchStart = (e: TouchEvent) => {
+    this.touchStartY = e.touches[0].clientY;
+    window.addEventListener('touchmove', this.handleTouchMove);
+    window.addEventListener('touchend', this.handleTouchEnd);
+  };
+
+  handleTouchMove = (e: TouchEvent) => {
+    this.touchEndY = e.touches[0].clientY;
+  };
+
+  handleTouchEnd = (e: TouchEvent) => {
+    this.touchEndY = e.changedTouches[0].clientY;
+    if (this.touchEndY > this.touchStartY) {
       this.moveSlide(1);
+    }
+    if (this.touchEndY < this.touchStartY) {
+      this.moveSlide(-1);
+    }
+  };
+
+  handleWheel = (e: WheelEvent) => {
+    if (!this.waitHandle) {
+      this.waitHandle = true;
+      if (e.deltaY > 0) {
+        this.moveSlide(-1);
+      } else {
+        this.moveSlide(1);
+      }
+      setTimeout(() => {
+        this.waitHandle = false;
+      }, 500);
     }
   };
 
@@ -77,8 +108,9 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
     if (showNavigation) {
       navigationButtons = <Navigation moveSlide={this.moveSlide} />;
     }
+
     return (
-      <React.Fragment>
+      <div>
         <div role={'verticalCarousel'}>
           <Wrapper>
             {this.getPresentableSlides().map((slide, presentableIndex) => (
@@ -98,7 +130,7 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
             {navigationButtons}
           </Wrapper>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

@@ -6,12 +6,12 @@ import styled from 'styled-components';
 import HomeContent from './HomeContent.json';
 
 const StyledHome = styled.div`
-  position: 'fixed';
-  display: 'flex';
-  flex-direction: 'column';
-  justify-content: 'center';
-  width: '100vw';
-  margin: '0 auto';
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  margin: 0 auto;
 `;
 
 export default class Home extends Component {

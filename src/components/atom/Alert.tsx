@@ -10,7 +10,7 @@ const AlertStyled = styled('div')`
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
-  max-width: 350px;
+  width: 350px;
   z-index: 1;
   background-color: ${(props: AlertStyledProps) => {
     if (props.type === 'success') {

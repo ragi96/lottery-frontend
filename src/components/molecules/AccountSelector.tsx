@@ -5,12 +5,15 @@ import { ApiPromise } from '@polkadot/api';
 import Identicon from '@polkadot/react-identicon';
 
 const DropDownContainer = styled('div')`
-  width: 100%;
-  max-width: 340px;
-  right: 0;
+  right: 15px;
   background-color: #171712;
   position: absolute;
   z-index: 1;
+
+  @media (min-width: 576px) {
+    width: 100%;
+    max-width: 340px;
+  }
 `;
 
 const DropDownHeader = styled('div')`

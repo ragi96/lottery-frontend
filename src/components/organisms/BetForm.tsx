@@ -21,7 +21,14 @@ const BetFormStyled = styled('div')`
 const HexColorPickerStyled = styled(HexColorPicker)`
   &.react-colorful {
     width: 100%;
+    height: 150px;
     cursor: pointer;
+  }
+
+  @media (min-width: 1280px) {
+    &.react-colorful {
+      height: 200px;
+    }
   }
 `;
 
@@ -101,7 +108,7 @@ export default function BetForm(props: BetFormProps) {
     const storageDepositLimit = null;
     const colorArray = createUInt8Array();
     const gasLimit = (await getGasLimit(colorArray, contract, accountPair)).toFixed();
-
+    setStatus({ text: `Signing the transaction...`, type: 'warning', txHash: '' });
     if (accountPair.isLocked) {
       const signer = await getInjector(accountPair);
       if (signer !== null) {
@@ -155,20 +162,20 @@ export default function BetForm(props: BetFormProps) {
         </Col>
       </Row>
       <Row>
-        <Col xs={6}>
+        <Col md={6}>
           <HexColorPickerStyled color={color} onChange={setColor} />
         </Col>
-        <Col xs={6}>
+        <Col md={6}>
           <Colorfield color={color} />
         </Col>
       </Row>
       <Row>
-        <Col xs={6}>
+        <Col xs={12}>
           <Text text={'Your Pick in Hex: ' + color} />
         </Col>
-      </Row>
-      <Row>
-        <Button label={'Submit Bet'} primary={false} onClick={submit} />
+        <Col xs={12}>
+          <Button label={'Submit Bet'} primary={false} onClick={submit} />
+        </Col>
       </Row>
       <Alert type={status.type} setStatus={setStatus}>
         <div>

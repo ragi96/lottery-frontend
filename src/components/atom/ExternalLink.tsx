@@ -11,7 +11,7 @@ const Link = styled.a`
   color: #ff0;
   &:hover {
     border: solid 1px #fff;
-    background-color: '#ff0';
+    background-color: #ff0;
     color: #000;
   }
 `;
