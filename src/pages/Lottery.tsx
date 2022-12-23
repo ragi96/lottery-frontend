@@ -3,6 +3,16 @@ import { Wrapper, Heading, Text, AccountSelector, BetForm, Loader } from '../com
 import { Container, Row, Col, Hidden } from 'react-grid-system';
 import { useApi, ContractContextProvider, useContract } from '../context/';
 import LotteryHeader from '../components/organisms/LotteryHeader';
+import styled from 'styled-components';
+
+const StyledLottery = styled.div`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  margin: 0 auto;
+`;
 
 function Main() {
   const [color, setColor] = useState('#F0F000');
@@ -26,33 +36,35 @@ function Main() {
   }
 
   return (
-    <Wrapper>
-      <Container role={'lottery'}>
-        <Hidden xs sm>
+    <StyledLottery>
+      <Wrapper>
+        <Container role={'lottery'}>
+          <Hidden xs sm>
+            <Row direction="row">
+              <Col sm={12}>
+                <LotteryHeader accountAddress={accountAddress} />
+              </Col>
+            </Row>
+          </Hidden>
           <Row direction="row">
-            <Col sm={12}>
-              <LotteryHeader accountAddress={accountAddress} />
+            <Col sm={12} md={6}>
+              <Heading headingLevel="h1">Pick Your Color</Heading>
+              <Text text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor." />
+            </Col>
+            <Col sm={12} md={6}>
+              <Hidden xs>
+                <AccountSelector setAccountAddress={setAccountAddress} />
+              </Hidden>
             </Col>
           </Row>
-        </Hidden>
-        <Row direction="row">
-          <Col sm={12} md={6}>
-            <Heading headingLevel="h1">Pick Your Color</Heading>
-            <Text text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor." />
-          </Col>
-          <Col sm={12} md={6}>
-            <Hidden xs>
-              <AccountSelector setAccountAddress={setAccountAddress} />
-            </Hidden>
-          </Col>
-        </Row>
-        <Row direction="row">
-          <Col sm={12} md={12}>
-            <BetForm accountAddress={accountAddress} color={color} setColor={setColor} />
-          </Col>
-        </Row>
-      </Container>
-    </Wrapper>
+          <Row direction="row">
+            <Col sm={12} md={12}>
+              <BetForm accountAddress={accountAddress} color={color} setColor={setColor} />
+            </Col>
+          </Row>
+        </Container>
+      </Wrapper>
+    </StyledLottery>
   );
 }
 
