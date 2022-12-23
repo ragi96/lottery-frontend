@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Slide, Wrapper, Navigation } from '..';
+import { Slide, Wrapper, Navigation, Scrollbar } from '..';
 import { SlideContent } from '../../types/utils';
 
 function mod(a: number, b: number) {
@@ -52,14 +52,14 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
   handleWheel = (e: WheelEvent) => {
     if (!this.waitHandle) {
       this.waitHandle = true;
-      if (e.deltaY > 0) {
+      if (e.deltaY < 0) {
         this.moveSlide(-1);
       } else {
         this.moveSlide(1);
       }
       setTimeout(() => {
         this.waitHandle = false;
-      }, 500);
+      }, 750);
     }
   };
 
@@ -113,6 +113,7 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
       <div>
         <div role={'verticalCarousel'}>
           <Wrapper>
+            <Scrollbar length={this.props.slides.length} position="left" active={this.state.index} />
             {this.getPresentableSlides().map((slide, presentableIndex) => (
               <Slide
                 key={slide.key}
@@ -128,6 +129,7 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
               />
             ))}
             {navigationButtons}
+            <Scrollbar length={this.props.slides.length} position="right" active={this.state.index} />
           </Wrapper>
         </div>
       </div>

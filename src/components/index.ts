@@ -19,6 +19,7 @@ import LoadingCircle from './atom/LoadingCircle';
 import Button from './atom/Button';
 import Colorfield from './atom/Colorfield';
 import Alert from './atom/Alert';
+import Scrollbar from './atom/Scrollbar';
 
 export {
   Header,
@@ -41,5 +42,6 @@ export {
   Button,
   Colorfield,
   ButtonLink,
-  Alert
+  Alert,
+  Scrollbar
 };

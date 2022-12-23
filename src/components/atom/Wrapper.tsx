@@ -5,7 +5,7 @@ import { JustChildProps } from '../../types/utils';
 const Wrap = styled.div`
   width: calc(100% - 4px);
   height: calc(100vh - 300px);
-  position: abso;
+  position: relative;
   justify-content: center;
   border-radius: 50px;
   border: solid 1px #ffff64;
