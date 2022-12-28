@@ -5,11 +5,13 @@ on:
       - main # or the name of your main branch
 jobs:
   build:
-    name: Build
+    name: Sonar / Codecov and Deploy to Stage
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v3
@@ -44,18 +46,16 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       - name: Build
-        run: npm build
+        run: CI=false npm run build
       - name: Deploy
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        uses: AbleLincoln/push-to-sftp@v1.0
         with:
-          username: ${{ secrets.FTP_USERNAME }}
-          server: ${{ secrets.FTP_SERVER }}
+          host: ${{ secrets.FTP_SERVER }}
           port: ${{ secrets.FTP_PORT }}
-          local_path: './build/*'
-          remote_path: '/var/www/app'
-          sftp_only: true
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-
+          sourceDir: ./build/
+          targetDir: ./htdocs/
       # If you wish to fail your job when the Quality Gate is red, uncomment the
       # following lines. This would typically be used to fail a deployment.
       #- uses: sonarsource/sonarqube-quality-gate-action@master
