@@ -52,7 +52,11 @@ export default function BetForm(props: BetFormProps) {
   const createUInt8Array = (): Uint8Array => {
     const colorArray = new Uint8Array(32);
     for (let i = 0; i < 3; i++) {
-      const colorHex = hexAddPrefix(color.substring(1 + i, 3 + i));
+      let countAdjust = i;
+      if (i !== 0) {
+        countAdjust = i * 2;
+      }
+      const colorHex = hexAddPrefix(color.substring(1 + countAdjust, 3 + countAdjust));
       colorArray[i] = hexToU8a(colorHex)[0];
     }
     return colorArray;
