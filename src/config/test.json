@@ -1,4 +1,4 @@
 {
-    "PROVIDER_SOCKET": "wss://substrate.ragilab.science",
-    "DEVELOPMENT_KEYRING": false
-  }
+  "PROVIDER_SOCKET": "wss://substrate.ragilab.science",
+  "DEVELOPMENT_KEYRING": false
+}

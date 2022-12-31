@@ -1,5 +1,5 @@
 {
-    "PROVIDER_SOCKET": "wss://substrate.ragilab.science",
-    "DEVELOPMENT_KEYRING": true,
-    "CONTRACT_ADDRESS": "5HbnZUHeSdM9NgykE5MbSWk4URXrErdUR57j3UAwrRRMmcvM"
-  }
+  "PROVIDER_SOCKET": "wss://substrate.ragilab.science",
+  "DEVELOPMENT_KEYRING": true,
+  "CONTRACT_ADDRESS": "5HbnZUHeSdM9NgykE5MbSWk4URXrErdUR57j3UAwrRRMmcvM"
+}
