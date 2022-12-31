@@ -3,7 +3,7 @@ import { Alert, Text } from '..';
 import { StatusMessages } from '../../types/utils';
 import '@testing-library/jest-dom/extend-expect';
 
-const setStatus = (status: StatusMessages) => console.log('test');
+const setStatus = (status: StatusMessages) => console.log(status);
 
 test('alert warning renders', () => {
   const { getByRole } = render(
