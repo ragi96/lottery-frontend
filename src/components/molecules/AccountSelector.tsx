@@ -26,7 +26,7 @@ const DropDownHeader = styled('div')`
 `;
 
 const HeaderSpan = styled('span')`
-  line-height: 1.22rem;
+  line-height: 1.22em;
   color: #ff3c00;
   font-size: 1.3rem;
   padding-top: 4px;

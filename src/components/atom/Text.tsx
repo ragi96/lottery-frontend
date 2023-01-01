@@ -6,7 +6,7 @@ const Paragraph = styled.p`
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.22rem;
+  line-height: 1.22em;
   letter-spacing: normal;
   text-align: left;
   color: #fff;
