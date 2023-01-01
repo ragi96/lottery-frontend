@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { animated, useSpring } from '@react-spring/web';
-import { Anim, Heading, Text, ExternalLink } from '..';
+import { Anim, Heading, Text, ExternalLink, ButtonLink } from '..';
 import { Container, Row, Col, Visible } from 'react-grid-system';
 
 interface SlideProps {
@@ -9,6 +9,7 @@ interface SlideProps {
   text2: string;
   label: string;
   link: string;
+  buttonType: string;
   offsetRadius: number;
   index: number;
   reverse: boolean;
@@ -16,7 +17,7 @@ interface SlideProps {
 }
 
 export default function Slide(props: SlideProps) {
-  const { title, text1, text2, label, link, offsetRadius, index, reverse, moveSlide } = props;
+  const { title, text1, text2, label, link, buttonType, offsetRadius, index, reverse, moveSlide } = props;
   const down = false;
   const offsetFromMiddle = index - offsetRadius;
   const totalPresentables = 2 * offsetRadius + 1;
@@ -63,6 +64,19 @@ export default function Slide(props: SlideProps) {
     []
   );
 
+  const getButton = (buttonType: string, link: string, label: string) => {
+    switch (buttonType) {
+      case 'external':
+        return <ExternalLink href={link}>{label}</ExternalLink>;
+      case 'internal':
+        return <ButtonLink to={link} label={label} />;
+      default:
+        return null;
+    }
+  };
+
+  const slideButton = getButton(buttonType, link, label);
+
   return (
     <animated.div
       role={'slide'}
@@ -83,7 +97,7 @@ export default function Slide(props: SlideProps) {
             <Heading headingLevel="h1">{title}</Heading>
             <Text text={text1} />
             <Text text={text2} />
-            <ExternalLink href={link}>{label}</ExternalLink>
+            {slideButton}
           </Col>
           <Col sm={12} md={6}>
             <Visible md>

@@ -7,9 +7,7 @@
   "contract": {
     "name": "lottery",
     "version": "0.1.0",
-    "authors": [
-      "[Rafael Giezendanner] <[your_email]>"
-    ]
+    "authors": ["[Rafael Giezendanner] <[your_email]>"]
   },
   "V3": {
     "spec": {
@@ -40,16 +38,12 @@
               "indexed": true,
               "label": "from",
               "type": {
-                "displayName": [
-                  "AccountId"
-                ],
+                "displayName": ["AccountId"],
                 "type": 5
               }
             }
           ],
-          "docs": [
-            " Emitted whenever a new ticket is being registered."
-          ],
+          "docs": [" Emitted whenever a new ticket is being registered."],
           "label": "RegisterTicket"
         }
       ],
@@ -64,25 +58,19 @@
               }
             }
           ],
-          "docs": [
-            " Register specific ticket with caller as owner."
-          ],
+          "docs": [" Register specific ticket with caller as owner."],
           "label": "register_ticket",
           "mutates": true,
           "payable": true,
           "returnType": {
-            "displayName": [
-              "Result"
-            ],
+            "displayName": ["Result"],
             "type": 10
           },
           "selector": "0xebba1cc7"
         },
         {
           "args": [],
-          "docs": [
-            " returns the winner ticket"
-          ],
+          "docs": [" returns the winner ticket"],
           "label": "get_winner_ticket",
           "mutates": false,
           "payable": false,
@@ -102,9 +90,7 @@
               }
             }
           ],
-          "docs": [
-            " returns all accounts per ticket for the actual run"
-          ],
+          "docs": [" returns all accounts per ticket for the actual run"],
           "label": "get_accounts_by_ticket",
           "mutates": false,
           "payable": false,
@@ -116,57 +102,43 @@
         },
         {
           "args": [],
-          "docs": [
-            " returns the actual jackpot"
-          ],
+          "docs": [" returns the actual jackpot"],
           "label": "get_jackpot",
           "mutates": false,
           "payable": false,
           "returnType": {
-            "displayName": [
-              "Balance"
-            ],
+            "displayName": ["Balance"],
             "type": 9
           },
           "selector": "0x2f3a120b"
         },
         {
           "args": [],
-          "docs": [
-            " returns the block of the last drawing"
-          ],
+          "docs": [" returns the block of the last drawing"],
           "label": "get_last_drawing",
           "mutates": false,
           "payable": false,
           "returnType": {
-            "displayName": [
-              "BlockNumber"
-            ],
+            "displayName": ["BlockNumber"],
             "type": 8
           },
           "selector": "0x04826e9c"
         },
         {
           "args": [],
-          "docs": [
-            " returns the end jackpot of the last round"
-          ],
+          "docs": [" returns the end jackpot of the last round"],
           "label": "get_last_jackpot",
           "mutates": false,
           "payable": false,
           "returnType": {
-            "displayName": [
-              "Balance"
-            ],
+            "displayName": ["Balance"],
             "type": 9
           },
           "selector": "0xfb593c8b"
         },
         {
           "args": [],
-          "docs": [
-            " returns the array of the last winners or the default address"
-          ],
+          "docs": [" returns the array of the last winners or the default address"],
           "label": "get_last_winner_or_default",
           "mutates": false,
           "payable": false,
@@ -178,32 +150,24 @@
         },
         {
           "args": [],
-          "docs": [
-            " returns the block of the last drawing"
-          ],
+          "docs": [" returns the block of the last drawing"],
           "label": "get_next_drawing",
           "mutates": false,
           "payable": false,
           "returnType": {
-            "displayName": [
-              "BlockNumber"
-            ],
+            "displayName": ["BlockNumber"],
             "type": 8
           },
           "selector": "0x3f2ee324"
         },
         {
           "args": [],
-          "docs": [
-            " returns the price per winner of the last round"
-          ],
+          "docs": [" returns the price per winner of the last round"],
           "label": "get_last_pot_per_ticket",
           "mutates": false,
           "payable": false,
           "returnType": {
-            "displayName": [
-              "Balance"
-            ],
+            "displayName": ["Balance"],
             "type": 9
           },
           "selector": "0xbf7a519c"
@@ -327,22 +291,14 @@
               "type": 4
             }
           ],
-          "path": [
-            "ink_storage",
-            "lazy",
-            "mapping",
-            "Mapping"
-          ]
+          "path": ["ink_storage", "lazy", "mapping", "Mapping"]
         }
       },
       {
         "id": 1,
         "type": {
           "def": {
-            "tuple": [
-              2,
-              3
-            ]
+            "tuple": [2, 3]
           }
         }
       },
@@ -389,11 +345,7 @@
               ]
             }
           },
-          "path": [
-            "ink_env",
-            "types",
-            "AccountId"
-          ]
+          "path": ["ink_env", "types", "AccountId"]
         }
       },
       {
@@ -420,10 +372,7 @@
               ]
             }
           },
-          "path": [
-            "ink_primitives",
-            "Key"
-          ]
+          "path": ["ink_primitives", "Key"]
         }
       },
       {
@@ -479,9 +428,7 @@
               "type": 12
             }
           ],
-          "path": [
-            "Result"
-          ]
+          "path": ["Result"]
         }
       },
       {
@@ -509,11 +456,7 @@
               ]
             }
           },
-          "path": [
-            "lottery",
-            "lottery",
-            "Error"
-          ]
+          "path": ["lottery", "lottery", "Error"]
         }
       }
     ]

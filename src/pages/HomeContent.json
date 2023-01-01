@@ -4,26 +4,29 @@
     "title": "ragilab color lottery",
     "text1": "Pick your favorite color and win the jackpot on the first lottery on substrate.",
     "text2": "Use the frontend and the contract (written in ink!) as base for your own project - and get rich quick",
-    "label": "Submit Bet",
+    "label": "Buy a ticket",
     "link": "/lottery",
+    "buttonType": "internal",
     "reverse": false
   },
   {
     "key": 2,
     "title": "Rules",
-    "text1": "100% of all bets are distributed to the winner.",
+    "text1": "A ticket is a bet on a specific colour in HEX format. The price of a ticket is 1 microunit. The ticket is always valid for the current round and each colour is sold a maximum of eight times per round. A round consists of several draws. The round ends when the jackpot is won. The jackpot consists of 100% of the revenue from the tickets sold in a round.",
     "text2": "",
-    "label": "Github",
-    "link": "https://www.google.ch/",
+    "label": "",
+    "link": "",
+    "buttonType": "none",
     "reverse": true
   },
   {
     "key": 3,
     "title": "Source",
-    "text1": "Check out the source on github, write PR's, add Issues, fork it.",
+    "text1": "As a developer, I prioritize the concept of open source. That's why the entire code for this lottery is freely accessible and can be viewed, modified, and distributed by anyone.",
     "text2": "",
     "label": "Github",
-    "link": "https://www.google.ch/",
+    "link": "https://www.github.com/ragi96/",
+    "buttonType": "external",
     "reverse": false
   }
 ]

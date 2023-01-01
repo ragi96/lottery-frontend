@@ -31,6 +31,7 @@ export default class Home extends Component {
         text2: slide.text2,
         label: slide.label,
         link: slide.link,
+        buttonType: slide.buttonType,
         reverse: slide.reverse
       };
     });

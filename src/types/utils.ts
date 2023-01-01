@@ -12,6 +12,7 @@ export interface SlideContent {
   text2: string;
   label: string;
   link: string;
+  buttonType: string;
   reverse: boolean;
 }
 

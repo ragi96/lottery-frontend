@@ -122,6 +122,7 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
                 text2={slide.text2}
                 label={slide.label}
                 link={slide.link}
+                buttonType={slide.buttonType}
                 reverse={slide.reverse}
                 moveSlide={this.moveSlide}
                 offsetRadius={this.clampOffsetRadius(offsetRadius)}

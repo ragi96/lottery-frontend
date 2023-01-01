@@ -15,6 +15,7 @@ test('slide exists', () => {
         text2="text2"
         label="label"
         link="/"
+        buttonType="internal"
         offsetRadius={20}
         index={0}
         reverse={false}
@@ -34,6 +35,7 @@ test('slide has title', () => {
         text2="text2"
         label="label"
         link="/"
+        buttonType="internal"
         offsetRadius={20}
         index={0}
         reverse={false}
@@ -53,6 +55,7 @@ test('slide has text1', () => {
         text2="text2"
         label="label"
         link="/"
+        buttonType="internal"
         offsetRadius={20}
         index={0}
         reverse={false}
@@ -72,6 +75,7 @@ test('slide has text2', () => {
         text2="text2"
         label="label"
         link="/"
+        buttonType="internal"
         offsetRadius={20}
         index={0}
         reverse={false}
@@ -91,6 +95,7 @@ test('slide has label', () => {
         text2="text2"
         label="label"
         link="/"
+        buttonType="internal"
         offsetRadius={20}
         index={0}
         reverse={false}
@@ -101,7 +106,7 @@ test('slide has label', () => {
   expect(getByText('label')).toBeInTheDocument();
 });
 
-test('slide has link', () => {
+test('slide has internal link', () => {
   const { getByText } = render(
     <BrowserRouter>
       <Slide
@@ -110,6 +115,7 @@ test('slide has link', () => {
         text2="text2"
         label="label"
         link="/"
+        buttonType="internal"
         offsetRadius={20}
         index={0}
         reverse={false}
@@ -118,4 +124,44 @@ test('slide has link', () => {
     </BrowserRouter>
   );
   expect(getByText('label')).toBeInTheDocument();
+});
+
+test('slide has external link', () => {
+  const { getByRole } = render(
+    <BrowserRouter>
+      <Slide
+        title="title"
+        text1="text1"
+        text2="text2"
+        label="label"
+        link="https://github.com"
+        buttonType="external"
+        offsetRadius={20}
+        index={0}
+        reverse={false}
+        moveSlide={moveSlide}
+      />
+    </BrowserRouter>
+  );
+  expect(getByRole('link')).toBeInTheDocument();
+});
+
+test('slide has no link', () => {
+  const { queryByRole } = render(
+    <BrowserRouter>
+      <Slide
+        title="title"
+        text1="text1"
+        text2="text2"
+        label="label"
+        link=""
+        buttonType=""
+        offsetRadius={20}
+        index={0}
+        reverse={false}
+        moveSlide={moveSlide}
+      />
+    </BrowserRouter>
+  );
+  expect(queryByRole('link')).not.toBeInTheDocument();
 });
