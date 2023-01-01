@@ -44,9 +44,3 @@ AddType image/webp .webp
     RewriteCond %{REQUEST_FILENAME} !-l
     RewriteRule . /index.html [L]
 </IfModule>
-
-#password protection
-AuthType Basic 
-AuthName "Protected Lottery" 
-AuthUserFile "/var/www/virtual/ragilab.science/lottery/.htpasswd"
-require valid-user
