@@ -1,13 +1,15 @@
 {
   "source": {
-    "hash": "0xb93a4e4661457e9b59e86c405c5ba2c8fa56350957ec464718ea7fe9aaea88ee",
+    "hash": "0x9b2442f99ea7331fbc8347f07d7ebc5770e8f94506ccd9002f55bf9d801069ac",
     "language": "ink! 3.4.0",
     "compiler": "rustc 1.67.0-nightly"
   },
   "contract": {
     "name": "lottery",
     "version": "0.1.0",
-    "authors": ["[Rafael Giezendanner] <[your_email]>"]
+    "authors": [
+      "[Rafael Giezendanner] <[your_email]>"
+    ]
   },
   "V3": {
     "spec": {
@@ -27,10 +29,10 @@
             {
               "docs": [],
               "indexed": true,
-              "label": "bet",
+              "label": "ticket",
               "type": {
                 "displayName": [],
-                "type": 3
+                "type": 2
               }
             },
             {
@@ -38,71 +40,133 @@
               "indexed": true,
               "label": "from",
               "type": {
-                "displayName": ["AccountId"],
+                "displayName": [
+                  "AccountId"
+                ],
                 "type": 5
               }
             }
           ],
-          "docs": [" Emitted whenever a new bet is being registered."],
-          "label": "RegisterBet"
+          "docs": [
+            " Emitted whenever a new ticket is being registered."
+          ],
+          "label": "RegisterTicket"
         }
       ],
       "messages": [
         {
           "args": [
             {
-              "label": "bet",
+              "label": "ticket",
               "type": {
                 "displayName": [],
-                "type": 3
+                "type": 2
               }
             }
           ],
-          "docs": [" Register specific bet with caller as owner."],
-          "label": "register_bet",
+          "docs": [
+            " Register specific ticket with caller as owner."
+          ],
+          "label": "register_ticket",
           "mutates": true,
           "payable": true,
           "returnType": {
-            "displayName": ["Result"],
+            "displayName": [
+              "Result"
+            ],
             "type": 10
           },
-          "selector": "0xc6f3dfea"
+          "selector": "0xebba1cc7"
         },
         {
           "args": [],
-          "docs": [" Simply returns the winner bet"],
-          "label": "get",
+          "docs": [
+            " returns the winner ticket"
+          ],
+          "label": "get_winner_ticket",
           "mutates": false,
           "payable": false,
           "returnType": {
             "displayName": [],
-            "type": 3
+            "type": 2
           },
-          "selector": "0x2f865bd9"
+          "selector": "0xe9b8319b"
         },
         {
           "args": [
             {
-              "label": "bet_hash",
+              "label": "ticket_hash",
               "type": {
                 "displayName": [],
-                "type": 3
+                "type": 2
               }
             }
           ],
-          "docs": [],
-          "label": "get_accounts_by_bet",
+          "docs": [
+            " returns all accounts per ticket for the actual run"
+          ],
+          "label": "get_accounts_by_ticket",
           "mutates": false,
           "payable": false,
           "returnType": {
             "displayName": [],
             "type": 4
           },
-          "selector": "0x0f9dcb52"
+          "selector": "0xc83fa51d"
         },
         {
           "args": [],
-          "docs": [],
+          "docs": [
+            " returns the actual jackpot"
+          ],
+          "label": "get_jackpot",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "Balance"
+            ],
+            "type": 9
+          },
+          "selector": "0x2f3a120b"
+        },
+        {
+          "args": [],
+          "docs": [
+            " returns the block of the last drawing"
+          ],
+          "label": "get_last_drawing",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "BlockNumber"
+            ],
+            "type": 8
+          },
+          "selector": "0x04826e9c"
+        },
+        {
+          "args": [],
+          "docs": [
+            " returns the end jackpot of the last round"
+          ],
+          "label": "get_last_jackpot",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "Balance"
+            ],
+            "type": 9
+          },
+          "selector": "0xfb593c8b"
+        },
+        {
+          "args": [],
+          "docs": [
+            " returns the array of the last winners or the default address"
+          ],
           "label": "get_last_winner_or_default",
           "mutates": false,
           "payable": false,
@@ -114,51 +178,35 @@
         },
         {
           "args": [],
-          "docs": [" Simply returns the block of the last drawing"],
-          "label": "get_last_drawing",
-          "mutates": false,
-          "payable": false,
-          "returnType": {
-            "displayName": ["BlockNumber"],
-            "type": 8
-          },
-          "selector": "0x04826e9c"
-        },
-        {
-          "args": [],
-          "docs": [" Simply returns the block of the last drawing"],
+          "docs": [
+            " returns the block of the last drawing"
+          ],
           "label": "get_next_drawing",
           "mutates": false,
           "payable": false,
           "returnType": {
-            "displayName": ["BlockNumber"],
+            "displayName": [
+              "BlockNumber"
+            ],
             "type": 8
           },
           "selector": "0x3f2ee324"
         },
         {
           "args": [],
-          "docs": [" returns the price per winner of the last round"],
-          "label": "get_last_pot_per_bet",
+          "docs": [
+            " returns the price per winner of the last round"
+          ],
+          "label": "get_last_pot_per_ticket",
           "mutates": false,
           "payable": false,
           "returnType": {
-            "displayName": ["Balance"],
+            "displayName": [
+              "Balance"
+            ],
             "type": 9
           },
-          "selector": "0x4f660cbf"
-        },
-        {
-          "args": [],
-          "docs": [" returns the block of the last drawing"],
-          "label": "get_jackpot",
-          "mutates": false,
-          "payable": false,
-          "returnType": {
-            "displayName": ["Balance"],
-            "type": 9
-          },
-          "selector": "0x2f3a120b"
+          "selector": "0xbf7a519c"
         }
       ]
     },
@@ -172,37 +220,21 @@
                 "ty": 0
               }
             },
-            "name": "round"
+            "name": "ticket_and_address"
           },
           {
             "layout": {
               "cell": {
                 "key": "0x0100000000000000000000000000000000000000000000000000000000000000",
-                "ty": 1
+                "ty": 3
               }
             },
-            "name": "ticket_and_address"
-          },
-          {
-            "layout": {
-              "array": {
-                "cellsPerElem": 1,
-                "layout": {
-                  "cell": {
-                    "key": "0x0a00000000000000000000000000000000000000000000000000000000000000",
-                    "ty": 5
-                  }
-                },
-                "len": 8,
-                "offset": "0x0200000000000000000000000000000000000000000000000000000000000000"
-              }
-            },
-            "name": "def_address"
+            "name": "round"
           },
           {
             "layout": {
               "cell": {
-                "key": "0x0a00000000000000000000000000000000000000000000000000000000000000",
+                "key": "0x0200000000000000000000000000000000000000000000000000000000000000",
                 "ty": 8
               }
             },
@@ -211,7 +243,7 @@
           {
             "layout": {
               "cell": {
-                "key": "0x0b00000000000000000000000000000000000000000000000000000000000000",
+                "key": "0x0300000000000000000000000000000000000000000000000000000000000000",
                 "ty": 9
               }
             },
@@ -223,24 +255,49 @@
                 "cellsPerElem": 1,
                 "layout": {
                   "cell": {
-                    "key": "0x0f00000000000000000000000000000000000000000000000000000000000000",
-                    "ty": 0
+                    "key": "0x0700000000000000000000000000000000000000000000000000000000000000",
+                    "ty": 3
                   }
                 },
                 "len": 3,
-                "offset": "0x0c00000000000000000000000000000000000000000000000000000000000000"
+                "offset": "0x0400000000000000000000000000000000000000000000000000000000000000"
               }
             },
-            "name": "winner_bet"
+            "name": "winner_ticket"
           },
           {
             "layout": {
               "cell": {
-                "key": "0x0f00000000000000000000000000000000000000000000000000000000000000",
+                "key": "0x0700000000000000000000000000000000000000000000000000000000000000",
                 "ty": 9
               }
             },
-            "name": "last_pot_per_bet"
+            "name": "last_jackpot"
+          },
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0800000000000000000000000000000000000000000000000000000000000000",
+                "ty": 9
+              }
+            },
+            "name": "last_pot_per_ticket"
+          },
+          {
+            "layout": {
+              "array": {
+                "cellsPerElem": 1,
+                "layout": {
+                  "cell": {
+                    "key": "0x1100000000000000000000000000000000000000000000000000000000000000",
+                    "ty": 5
+                  }
+                },
+                "len": 8,
+                "offset": "0x0900000000000000000000000000000000000000000000000000000000000000"
+              }
+            },
+            "name": "default_address"
           }
         ]
       }
@@ -248,14 +305,6 @@
     "types": [
       {
         "id": 0,
-        "type": {
-          "def": {
-            "primitive": "u8"
-          }
-        }
-      },
-      {
-        "id": 1,
         "type": {
           "def": {
             "composite": {
@@ -271,21 +320,40 @@
           "params": [
             {
               "name": "K",
-              "type": 2
+              "type": 1
             },
             {
               "name": "V",
               "type": 4
             }
           ],
-          "path": ["ink_storage", "lazy", "mapping", "Mapping"]
+          "path": [
+            "ink_storage",
+            "lazy",
+            "mapping",
+            "Mapping"
+          ]
+        }
+      },
+      {
+        "id": 1,
+        "type": {
+          "def": {
+            "tuple": [
+              2,
+              3
+            ]
+          }
         }
       },
       {
         "id": 2,
         "type": {
           "def": {
-            "tuple": [3, 0]
+            "array": {
+              "len": 3,
+              "type": 3
+            }
           }
         }
       },
@@ -293,10 +361,7 @@
         "id": 3,
         "type": {
           "def": {
-            "array": {
-              "len": 3,
-              "type": 0
-            }
+            "primitive": "u8"
           }
         }
       },
@@ -324,7 +389,11 @@
               ]
             }
           },
-          "path": ["ink_env", "types", "AccountId"]
+          "path": [
+            "ink_env",
+            "types",
+            "AccountId"
+          ]
         }
       },
       {
@@ -333,7 +402,7 @@
           "def": {
             "array": {
               "len": 32,
-              "type": 0
+              "type": 3
             }
           }
         }
@@ -351,7 +420,10 @@
               ]
             }
           },
-          "path": ["ink_primitives", "Key"]
+          "path": [
+            "ink_primitives",
+            "Key"
+          ]
         }
       },
       {
@@ -407,7 +479,9 @@
               "type": 12
             }
           ],
-          "path": ["Result"]
+          "path": [
+            "Result"
+          ]
         }
       },
       {
@@ -426,7 +500,7 @@
               "variants": [
                 {
                   "index": 0,
-                  "name": "BetAlreadyExists"
+                  "name": "TicketAlreadyExists"
                 },
                 {
                   "index": 1,
@@ -435,7 +509,11 @@
               ]
             }
           },
-          "path": ["lottery", "lottery", "Error"]
+          "path": [
+            "lottery",
+            "lottery",
+            "Error"
+          ]
         }
       }
     ]

@@ -65,7 +65,7 @@ export default function BetForm(props: BetFormProps) {
   const getGasLimit = async function (colorArray: Uint8Array, contract: ContractPromise, accountPair: KeyringPair) {
     const value = 1000000;
     const storageDepositLimit = null;
-    const { gasRequired } = await contract.query.registerBet(
+    const { gasRequired } = await contract.query.registerTicket(
       accountPair.address,
       { value, gasLimit: -1, storageDepositLimit },
       colorArray
@@ -117,7 +117,7 @@ export default function BetForm(props: BetFormProps) {
       const signer = await getInjector(accountPair);
       if (signer !== null) {
         contract.tx
-          .registerBet({ storageDepositLimit, gasLimit, value }, colorArray)
+          .registerTicket({ storageDepositLimit, gasLimit, value }, colorArray)
           .signAndSend(accountPair.address, { signer: signer }, (result) => {
             handleTxResult(result);
           })
@@ -125,7 +125,7 @@ export default function BetForm(props: BetFormProps) {
       }
     } else {
       await contract.tx
-        .registerBet({ storageDepositLimit, gasLimit, value }, colorArray)
+        .registerTicket({ storageDepositLimit, gasLimit, value }, colorArray)
         .signAndSend(accountPair, (result) => {
           handleTxResult(result);
         })
