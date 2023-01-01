@@ -4,6 +4,8 @@ import { useContract } from '../../context';
 import { u128 } from '@polkadot/types';
 import styled from 'styled-components';
 
+import config from '../../config';
+
 const JackpotWrapper = styled('div')`
   display: flex;
 `;
@@ -26,7 +28,8 @@ export default function Jackpot(props: JackpotProps) {
       const { result, output } = await contract.query.getJackpot(accountAddress, { value, gasLimit });
       if (result.isOk) {
         if (output instanceof u128) {
-          setJackpot(output.toString());
+          const jackpotValue = output.toNumber() / 1000000;
+          setJackpot(jackpotValue.toString());
         }
       }
     }
@@ -47,7 +50,7 @@ export default function Jackpot(props: JackpotProps) {
 
   return (
     <JackpotWrapper role={'jackpot'}>
-      <Text text={'Jackpot: ' + jackpot} />
+      <Text text={'Jackpot: ' + jackpot + ' micro ' + config.CURRENCY} />
     </JackpotWrapper>
   );
 }

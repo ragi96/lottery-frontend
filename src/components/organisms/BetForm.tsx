@@ -178,7 +178,7 @@ export default function BetForm(props: BetFormProps) {
           <Text text={'Your Pick in Hex: ' + color} />
         </Col>
         <Col xs={12}>
-          <Button label={'Submit Bet'} primary={false} onClick={submit} />
+          <Button label={'Buy Ticket'} primary={false} onClick={submit} />
         </Col>
       </Row>
       <Alert type={status.type} setStatus={setStatus}>

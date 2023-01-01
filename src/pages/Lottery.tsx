@@ -4,6 +4,7 @@ import { Container, Row, Col, Hidden } from 'react-grid-system';
 import { useApi, ContractContextProvider, useContract } from '../context/';
 import LotteryHeader from '../components/organisms/LotteryHeader';
 import styled from 'styled-components';
+import config from '../config';
 
 const StyledLottery = styled.div`
   position: fixed;
@@ -49,7 +50,7 @@ function Main() {
           <Row direction="row">
             <Col sm={12} md={6}>
               <Heading headingLevel="h1">Pick Your Color</Heading>
-              <Text text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor." />
+              <Text text={'Price per Ticket: 1 micro ' + config.CURRENCY} />
             </Col>
             <Col sm={12} md={6}>
               <Hidden xs>

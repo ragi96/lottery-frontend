@@ -1,4 +1,5 @@
 {
   "APP_NAME": "Ragilab Color Lottery",
-  "RPC": {}
+  "RPC": {},
+  "CURRENCY": "Units"
 }
