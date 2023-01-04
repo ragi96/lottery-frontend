@@ -17,8 +17,8 @@ const Wrap = styled.div`
     max-width: 1064px;
     width: calc(100% - 130px);
     max-height: 500px;
-    height: calc(100vh - 300px);
-    min-height: 250px;
+    height: calc(100vh - 400px);
+    min-height: 200px;
     box-shadow: 15px 15px 35px 0 rgba(109, 109, 46, 0.8), -15px -15px 35px 0 #d1d9df;
     padding: 55px 54px;
   }
