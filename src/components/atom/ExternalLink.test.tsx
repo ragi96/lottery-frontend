@@ -2,16 +2,16 @@ import { render } from '@testing-library/react';
 import { ExternalLink } from '..';
 
 test('link exists', () => {
-  const { getByRole } = render(<ExternalLink href="/">test</ExternalLink>);
-  expect(getByRole('link')).toBeInTheDocument();
+  const { getByTestId } = render(<ExternalLink href="/">test</ExternalLink>);
+  expect(getByTestId('link')).toBeInTheDocument();
 });
 
 test('link is a link', () => {
-  const { getByRole } = render(<ExternalLink href="/">test</ExternalLink>);
-  expect(getByRole('link')).toHaveAttribute('href', '/');
+  const { getByTestId } = render(<ExternalLink href="/">test</ExternalLink>);
+  expect(getByTestId('link')).toHaveAttribute('href', '/');
 });
 
 test('label is test', () => {
-  const { getByRole } = render(<ExternalLink href="/">test</ExternalLink>);
-  expect(getByRole('link')).toHaveTextContent('test');
+  const { getByTestId } = render(<ExternalLink href="/">test</ExternalLink>);
+  expect(getByTestId('link')).toHaveTextContent('test');
 });

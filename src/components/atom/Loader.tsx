@@ -33,7 +33,7 @@ const PositionedLoadingCircle = styled.div`
 
 export default function Loader(props: JustChildProps) {
   return (
-    <Dimmer role={'loader'}>
+    <Dimmer data-testid={'loader'}>
       <CenterWrapper>
         <PositionedLoadingCircle>
           <LoadingCircle fill={'#ff0'} />

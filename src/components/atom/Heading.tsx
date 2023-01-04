@@ -35,5 +35,9 @@ const StyledHeading = styled.div.attrs<HeadingProps>(({ headingLevel }) => ({
 `;
 
 export default function Heading(props: HeadingProps) {
-  return <StyledHeading headingLevel={props.headingLevel}>{props.children}</StyledHeading>;
+  return (
+    <StyledHeading data-testid={'heading'} headingLevel={props.headingLevel}>
+      {props.children}
+    </StyledHeading>
+  );
 }

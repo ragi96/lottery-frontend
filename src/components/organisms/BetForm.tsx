@@ -159,7 +159,7 @@ export default function BetForm(props: BetFormProps) {
   }
 
   return (
-    <BetFormStyled role={'bet-form'}>
+    <BetFormStyled data-testid={'bet-form'}>
       <Row>
         <Col xs={12}>
           <Heading headingLevel="h2">Use the color picker</Heading>

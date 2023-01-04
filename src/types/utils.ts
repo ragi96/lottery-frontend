@@ -8,8 +8,7 @@ export interface ButtonStyleProps {
 export interface SlideContent {
   key: number;
   title: string;
-  text1: string;
-  text2: string;
+  text: string;
   label: string;
   link: string;
   buttonType: string;

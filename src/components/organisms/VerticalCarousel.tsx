@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Hidden } from 'react-grid-system';
 import { Slide, Wrapper, Navigation, Scrollbar } from '..';
 import { SlideContent } from '../../types/utils';
 
@@ -111,15 +112,14 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
 
     return (
       <div>
-        <div role={'verticalCarousel'}>
+        <div data-testid={'verticalCarousel'}>
           <Wrapper>
             <Scrollbar length={this.props.slides.length} position="left" active={this.state.index} />
             {this.getPresentableSlides().map((slide, presentableIndex) => (
               <Slide
                 key={slide.key}
                 title={slide.title}
-                text1={slide.text1}
-                text2={slide.text2}
+                text={slide.text}
                 label={slide.label}
                 link={slide.link}
                 buttonType={slide.buttonType}
@@ -130,7 +130,9 @@ class VerticalCarousel extends Component<VerticalCarouselProps> {
               />
             ))}
             {navigationButtons}
-            <Scrollbar length={this.props.slides.length} position="right" active={this.state.index} />
+            <Hidden xs>
+              <Scrollbar length={this.props.slides.length} position="right" active={this.state.index} />
+            </Hidden>
           </Wrapper>
         </div>
       </div>

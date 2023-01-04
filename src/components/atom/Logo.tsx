@@ -20,7 +20,7 @@ const SvgWrapper = styled.div`
 
 export default function Logo() {
   return (
-    <Link to="/" role="logo">
+    <Link to="/" data-testid="logo">
       <SvgWrapper>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 98 75">
           <path fill="#FF0" d="M46.67 36.244h-4.52v19.434c-8.7.01-15.909.013-15.923 0l2.277 4.844H46.65l.02-24.278z" />

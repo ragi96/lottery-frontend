@@ -4,31 +4,31 @@ import LotteryHeader from './LotteryHeader';
 const accountPair = '';
 
 test('lottery header exists', () => {
-  const { getByRole } = render(<LotteryHeader accountAddress={accountPair} />);
-  expect(getByRole('lottery-header')).toBeInTheDocument();
+  const { getByTestId } = render(<LotteryHeader accountAddress={accountPair} />);
+  expect(getByTestId('lottery-header')).toBeInTheDocument();
 });
 
 test('lottery header has flex wrapper', () => {
-  const { getByRole } = render(<LotteryHeader accountAddress={accountPair} />);
-  expect(getByRole('flex-lottery-header')).toBeInTheDocument();
+  const { getByTestId } = render(<LotteryHeader accountAddress={accountPair} />);
+  expect(getByTestId('flex-lottery-header')).toBeInTheDocument();
 });
 
 test('flex wrapper has 3 childs', () => {
-  const { getByRole } = render(<LotteryHeader accountAddress={accountPair} />);
-  expect(getByRole('flex-lottery-header').children.length).toBe(3);
+  const { getByTestId } = render(<LotteryHeader accountAddress={accountPair} />);
+  expect(getByTestId('flex-lottery-header').children.length).toBe(3);
 });
 
 test('lottery header has block number', () => {
-  const { getByRole } = render(<LotteryHeader accountAddress={accountPair} />);
-  expect(getByRole('block-number')).toBeInTheDocument();
+  const { getByTestId } = render(<LotteryHeader accountAddress={accountPair} />);
+  expect(getByTestId('block-number')).toBeInTheDocument();
 });
 
 test('lottery header has jackpot', () => {
-  const { getByRole } = render(<LotteryHeader accountAddress={accountPair} />);
-  expect(getByRole('jackpot')).toBeInTheDocument();
+  const { getByTestId } = render(<LotteryHeader accountAddress={accountPair} />);
+  expect(getByTestId('jackpot')).toBeInTheDocument();
 });
 
 test('lottery header next-draw', () => {
-  const { getByRole } = render(<LotteryHeader accountAddress={accountPair} />);
-  expect(getByRole('next-draw')).toBeInTheDocument();
+  const { getByTestId } = render(<LotteryHeader accountAddress={accountPair} />);
+  expect(getByTestId('next-draw')).toBeInTheDocument();
 });

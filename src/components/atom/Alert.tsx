@@ -63,7 +63,7 @@ export default function Alert(props: AlertProps) {
   }
 
   return (
-    <AlertStyled role={'alert-' + type} type={type}>
+    <AlertStyled data-testid={'alert-' + type} type={type}>
       <StyledClose onClick={handleCloseCallback}>&times;</StyledClose>
       {children}
     </AlertStyled>

@@ -2,19 +2,19 @@ import { render } from '@testing-library/react';
 import { Wrapper } from '..';
 
 test('wrapper exists', () => {
-  const { getByRole } = render(
+  const { getByTestId } = render(
     <Wrapper>
       <p>test</p>
     </Wrapper>
   );
-  expect(getByRole('wrapper')).toBeInTheDocument();
+  expect(getByTestId('wrapper')).toBeInTheDocument();
 });
 
 test('wrapper contains children', () => {
-  const { getByRole } = render(
+  const { getByTestId } = render(
     <Wrapper>
       <p>test</p>
     </Wrapper>
   );
-  expect(getByRole('wrapper')).toContainHTML('test');
+  expect(getByTestId('wrapper')).toContainHTML('test');
 });

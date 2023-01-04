@@ -40,8 +40,8 @@ interface ScrollbarStyleWrapperProps {
 export default function Scrollbar(props: ScrollbarProps) {
   const { length, active, position } = props;
   return (
-    <ScrollbarWrapper role={'scrollbarwrapper'} position={position}>
-      <ScrollbarStyled role={'scrollbar'} length={length} active={active}></ScrollbarStyled>;
+    <ScrollbarWrapper data-testid={'scrollbarwrapper'} position={position}>
+      <ScrollbarStyled data-testid={'scrollbar'} length={length} active={active}></ScrollbarStyled>;
     </ScrollbarWrapper>
   );
 }

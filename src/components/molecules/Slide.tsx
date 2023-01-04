@@ -5,8 +5,7 @@ import { Container, Row, Col, Visible } from 'react-grid-system';
 
 interface SlideProps {
   title: string;
-  text1: string;
-  text2: string;
+  text: string;
   label: string;
   link: string;
   buttonType: string;
@@ -17,7 +16,7 @@ interface SlideProps {
 }
 
 export default function Slide(props: SlideProps) {
-  const { title, text1, text2, label, link, buttonType, offsetRadius, index, reverse, moveSlide } = props;
+  const { title, text, label, link, buttonType, offsetRadius, index, reverse, moveSlide } = props;
   const down = false;
   const offsetFromMiddle = index - offsetRadius;
   const totalPresentables = 2 * offsetRadius + 1;
@@ -79,7 +78,7 @@ export default function Slide(props: SlideProps) {
 
   return (
     <animated.div
-      role={'slide'}
+      data-testid={'slide'}
       style={{
         position: 'absolute',
         height: '70%',
@@ -95,8 +94,7 @@ export default function Slide(props: SlideProps) {
         <Row direction={reverse ? 'row-reverse' : 'row'}>
           <Col sm={12} md={6}>
             <Heading headingLevel="h1">{title}</Heading>
-            <Text text={text1} />
-            <Text text={text2} />
+            <Text text={text} />
             {slideButton}
           </Col>
           <Col sm={12} md={6}>

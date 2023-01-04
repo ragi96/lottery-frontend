@@ -3,28 +3,28 @@ import { BrowserRouter } from 'react-router-dom';
 import { Logo } from '..';
 
 test('logo exists', () => {
-  const { getByRole } = render(
+  const { getByTestId } = render(
     <BrowserRouter>
       <Logo />
     </BrowserRouter>
   );
-  expect(getByRole('logo')).toBeInTheDocument();
+  expect(getByTestId('logo')).toBeInTheDocument();
 });
 
 test('logo is a link', () => {
-  const { getByRole } = render(
+  const { getByTestId } = render(
     <BrowserRouter>
       <Logo />
     </BrowserRouter>
   );
-  expect(getByRole('logo')).toHaveAttribute('href', '/');
+  expect(getByTestId('logo')).toHaveAttribute('href', '/');
 });
 
 test('logo contains an svg', () => {
-  const { getByRole } = render(
+  const { getByTestId } = render(
     <BrowserRouter>
       <Logo />
     </BrowserRouter>
   );
-  expect(getByRole('logo')).toContainHTML('svg');
+  expect(getByTestId('logo')).toContainHTML('svg');
 });

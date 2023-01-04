@@ -1,9 +1,8 @@
 [
   {
     "key": 1,
-    "title": "ragilab color lottery",
-    "text1": "Pick your favorite color and win the jackpot on the first lottery on substrate.",
-    "text2": "Use the frontend and the contract (written in ink!) as base for your own project - and get rich quick",
+    "title": "Color Lottery",
+    "text": "Welcome to a color-based lottery smart contract a substrate blockchain! Here, you can participate in a decentralized and transparent lottery by purchasing tickets of a specific color.",
     "label": "Buy a ticket",
     "link": "/lottery",
     "buttonType": "internal",
@@ -12,8 +11,7 @@
   {
     "key": 2,
     "title": "Rules",
-    "text1": "A ticket is a bet on a specific colour in HEX format. The price of a ticket is 1 microunit. The ticket is always valid for the current round and each colour is sold a maximum of eight times per round. A round consists of several draws. The round ends when the jackpot is won. The jackpot consists of 100% of the revenue from the tickets sold in a round.",
-    "text2": "",
+    "text": "A ticket is a bet on a specific colour in HEX format. The price of a ticket is 1 microunit. The ticket is always valid for the current round and each colour is sold a maximum of eight times per round. A round consists of several draws. The round ends when the jackpot is won. The jackpot consists of 100% of the revenue from the tickets sold in a round.",
     "label": "",
     "link": "",
     "buttonType": "none",
@@ -22,8 +20,7 @@
   {
     "key": 3,
     "title": "Source",
-    "text1": "As a developer, I prioritize the concept of open source. That's why the entire code for this lottery is freely accessible and can be viewed, modified, and distributed by anyone.",
-    "text2": "",
+    "text": "As a developer, I prioritize the concept of open source. That's why the entire code for this lottery is freely accessible and can be viewed, modified, and distributed by anyone.",
     "label": "Github",
     "link": "https://www.github.com/ragi96/",
     "buttonType": "external",

@@ -22,8 +22,8 @@ interface KeyringProps {
 export default function LotteryHeader(props: KeyringProps) {
   const { accountAddress } = props;
   return (
-    <HeaderWrapper role={'lottery-header'}>
-      <FlexWrapper role={'flex-lottery-header'}>
+    <HeaderWrapper data-testid={'lottery-header'}>
+      <FlexWrapper data-testid={'flex-lottery-header'}>
         <BlockNumber />
         <Jackpot accountAddress={accountAddress} />
         <NextDraw accountAddress={accountAddress} />

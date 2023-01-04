@@ -3,6 +3,6 @@ import NextDraw from './NextDraw';
 
 test('next draw exists', () => {
   const accountPair = '';
-  const { getByRole } = render(<NextDraw accountAddress={accountPair} />);
-  expect(getByRole('next-draw')).toBeInTheDocument();
+  const { getByTestId } = render(<NextDraw accountAddress={accountPair} />);
+  expect(getByTestId('next-draw')).toBeInTheDocument();
 });

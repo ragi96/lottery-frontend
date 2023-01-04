@@ -30,7 +30,7 @@ export default function BlockNumber() {
   }, [blockNumberTimer]);
 
   return (
-    <BlockNumberWrapper role={'block-number'}>
+    <BlockNumberWrapper data-testid={'block-number'}>
       <Text text={'Block-Number: ' + blockNumber.toString()} />
     </BlockNumberWrapper>
   );

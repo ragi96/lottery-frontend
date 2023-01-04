@@ -9,7 +9,7 @@ interface ColorfieldProps {
 export default function Colorfield(props: ColorfieldProps) {
   return (
     <Hidden xs sm>
-      <ColorfieldStyled role={'colorfield'} color={props.color}></ColorfieldStyled>
+      <ColorfieldStyled data-testid={'colorfield'} color={props.color}></ColorfieldStyled>
     </Hidden>
   );
 }

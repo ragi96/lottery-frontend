@@ -49,7 +49,7 @@ export default function Jackpot(props: JackpotProps) {
   }, [contract, accountAddress, jackpotTimer]);
 
   return (
-    <JackpotWrapper role={'jackpot'}>
+    <JackpotWrapper data-testid={'jackpot'}>
       <Text text={'Jackpot: ' + jackpot + ' micro ' + config.CURRENCY} />
     </JackpotWrapper>
   );

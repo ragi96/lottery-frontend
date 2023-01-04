@@ -8,7 +8,7 @@ export default function Circles(props: JSX.IntrinsicAttributes & SVGProps<SVGSVG
   const strokeOpacity = props.strokeOpacity;
   return (
     <svg
-      role={'loading-circle'}
+      data-testid={'loading-circle'}
       {...{
         ...props,
         className: props.className ? `icon-loading ${props.className}` : 'icon-loading',

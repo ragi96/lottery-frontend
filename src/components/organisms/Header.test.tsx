@@ -3,46 +3,46 @@ import { BrowserRouter } from 'react-router-dom';
 import { Header } from '..';
 
 test('header exists', () => {
-  const { getByRole } = render(
+  const { getByTestId } = render(
     <BrowserRouter>
       <Header />
     </BrowserRouter>
   );
-  expect(getByRole('header')).toBeInTheDocument();
+  expect(getByTestId('header')).toBeInTheDocument();
 });
 
 test('logo exists', () => {
-  const { getByRole } = render(
+  const { getByTestId } = render(
     <BrowserRouter>
       <Header />
     </BrowserRouter>
   );
-  expect(getByRole('logo')).toBeInTheDocument();
+  expect(getByTestId('logo')).toBeInTheDocument();
 });
 
 test('link exists', () => {
-  const { getByRole } = render(
+  const { getByTestId } = render(
     <BrowserRouter>
       <Header />
     </BrowserRouter>
   );
-  expect(getByRole('link')).toBeInTheDocument();
+  expect(getByTestId('link')).toBeInTheDocument();
 });
 
 test('link leads to lottery', () => {
-  const { getByRole } = render(
+  const { getByTestId } = render(
     <BrowserRouter>
       <Header />
     </BrowserRouter>
   );
-  expect(getByRole('link')).toHaveAttribute('href', '/lottery');
+  expect(getByTestId('link')).toHaveAttribute('href', '/lottery');
 });
 
 test('link is primary', () => {
-  const { getByRole } = render(
+  const { getByTestId } = render(
     <BrowserRouter>
       <Header />
     </BrowserRouter>
   );
-  expect(getByRole('link')).toHaveStyle('border: solid 1px #ff0');
+  expect(getByTestId('link')).toHaveStyle('border: solid 1px #ff0');
 });

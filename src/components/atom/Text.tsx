@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Paragraph = styled.p`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -13,13 +13,17 @@ const Paragraph = styled.p`
   padding-bottom: 16px;
   display: inline-block;
 
+  @media (min-width: 576px) {
+    font-size: 20px;
+  }
+
   @media (min-width: 1280px) {
     padding-bottom: 30px;
   }
 `;
 
 export default function Text(props: TextProps) {
-  return <Paragraph role="text">{props.text}</Paragraph>;
+  return <Paragraph data-testid="text">{props.text}</Paragraph>;
 }
 
 interface TextProps {

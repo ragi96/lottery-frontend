@@ -20,7 +20,7 @@ setConfiguration({
 
 function App() {
   return (
-    <StyledApp role={'app'}>
+    <StyledApp data-testid={'app'}>
       <ApiContextProvider>
         <ScreenClassProvider>
           <BrowserRouter>

@@ -124,7 +124,7 @@ function Main(props: AccountSelectorProps) {
   }
 
   return (
-    <DropDownContainer role={'account-selector'}>
+    <DropDownContainer data-testid={'account-selector'}>
       <DropDownHeader onClick={toggling}>
         <ListItemIcon value={selectedAccount.key} size={24} theme={'polkadot'} />
         <HeaderSpan>{selectedAccount.name}</HeaderSpan>

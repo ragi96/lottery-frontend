@@ -39,7 +39,7 @@ function Navigation(props: NavigationProps) {
   );
 
   return (
-    <NavigationButtons role="slider-navigation">
+    <NavigationButtons data-testid="slider-navigation">
       <NavBtn onClick={move(-1)} />
       <Rotate onClick={move(1)}>
         <NavBtn />

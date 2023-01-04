@@ -6,6 +6,6 @@ function moveSlide(): void {
 }
 
 test('Slider Navigation exists', () => {
-  const { getByRole } = render(<Navigation moveSlide={moveSlide} />);
-  expect(getByRole('slider-navigation')).toBeInTheDocument();
+  const { getByTestId } = render(<Navigation moveSlide={moveSlide} />);
+  expect(getByTestId('slider-navigation')).toBeInTheDocument();
 });

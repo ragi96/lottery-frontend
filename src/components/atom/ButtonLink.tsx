@@ -19,7 +19,7 @@ const Btn = styled(Link)`
 
 export default function ButtonLink(props: LinkProps) {
   return (
-    <Btn role="link" to={props.to}>
+    <Btn data-testid="link" to={props.to}>
       <span>{props.label}</span>
     </Btn>
   );

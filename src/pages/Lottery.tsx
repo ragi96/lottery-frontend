@@ -39,7 +39,7 @@ function Main() {
   return (
     <StyledLottery>
       <Wrapper>
-        <Container role={'lottery'}>
+        <Container data-testid={'lottery'}>
           <Hidden xs sm>
             <Row direction="row">
               <Col sm={12}>

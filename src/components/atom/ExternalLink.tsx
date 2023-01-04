@@ -18,7 +18,7 @@ const Link = styled.a`
 
 export default function ExternalLink(props: LinkProps) {
   return (
-    <Link role="link" href={props.href} target={'_blank'}>
+    <Link data-testid="link" href={props.href} target={'_blank'}>
       {props.children}
     </Link>
   );

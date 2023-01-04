@@ -2,6 +2,6 @@ import { render } from '@testing-library/react';
 import { Colorfield } from '..';
 
 test('ani', () => {
-  const { getByRole } = render(<Colorfield color="red" />);
-  expect(getByRole('colorfield')).toBeInTheDocument();
+  const { getByTestId } = render(<Colorfield color="red" />);
+  expect(getByTestId('colorfield')).toBeInTheDocument();
 });

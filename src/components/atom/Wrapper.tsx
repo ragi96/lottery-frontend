@@ -5,6 +5,7 @@ import { JustChildProps } from '../../types/utils';
 const Wrap = styled.div`
   width: calc(100% - 4px);
   height: calc(100vh - 300px);
+  min-height: 450px;
   position: relative;
   justify-content: center;
   border-radius: 50px;
@@ -26,5 +27,5 @@ const Wrap = styled.div`
 `;
 
 export default function Wrapper(props: JustChildProps) {
-  return <Wrap role={'wrapper'}>{props.children}</Wrap>;
+  return <Wrap data-testid={'wrapper'}>{props.children}</Wrap>;
 }

@@ -3,6 +3,6 @@ import Jackpot from './Jackpot';
 
 test('Jackpot exists', () => {
   const accountPair = '';
-  const { getByRole } = render(<Jackpot accountAddress={accountPair} />);
-  expect(getByRole('jackpot')).toBeInTheDocument();
+  const { getByTestId } = render(<Jackpot accountAddress={accountPair} />);
+  expect(getByTestId('jackpot')).toBeInTheDocument();
 });

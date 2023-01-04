@@ -21,7 +21,7 @@ const Btn = styled.button`
 
 export default function ButtonOld(props: ButtonProps) {
   return (
-    <Btn role="button" onClick={props.onClick} primary={props.primary || false}>
+    <Btn data-testid="button" onClick={props.onClick} primary={props.primary || false}>
       {props.label}
     </Btn>
   );

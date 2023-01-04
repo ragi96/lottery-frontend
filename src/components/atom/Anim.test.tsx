@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { Anim } from '..';
 
-test('animation with img', () => {
+test('animation is img', () => {
   const { getByRole } = render(<Anim />);
   expect(getByRole('img')).toBeInTheDocument();
 });

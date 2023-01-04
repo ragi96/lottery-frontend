@@ -35,7 +35,7 @@ export default function NextDraw(prop: NextDrawProps) {
   }, [contract, accountAddress, nextDrawBlock]);
 
   return (
-    <NextDrawStyled role={'next-draw'}>
+    <NextDrawStyled data-testid={'next-draw'}>
       <Text text={'Next Draw at Block: ' + nextDrawBlock.toString()} />
     </NextDrawStyled>
   );

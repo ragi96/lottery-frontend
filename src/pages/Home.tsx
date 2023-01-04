@@ -27,8 +27,7 @@ export default class Home extends Component {
       return {
         key: slide.key,
         title: slide.title,
-        text1: slide.text1,
-        text2: slide.text2,
+        text: slide.text,
         label: slide.label,
         link: slide.link,
         buttonType: slide.buttonType,
@@ -36,7 +35,7 @@ export default class Home extends Component {
       };
     });
     return (
-      <StyledHome role={'home'}>
+      <StyledHome data-testid={'home'}>
         <VerticalCarousel
           slides={slides}
           offsetRadius={this.state.offsetRadius}
