@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'PT Mono';
+  font-style: normal;
+  src: url('PTM55FT.woff') format('woff');
+  font-display: swap;   
+  font-weight: 400;
+  src: url(font/PTMono-Regular.woff2) format("woff2");
+  text-rendering: optimizeLegibility;
+  unicode-range: u+000-5ff
+}
+
 a,
 abbr,
 address,
