@@ -64,7 +64,9 @@ export default function Alert(props: AlertProps) {
 
   return (
     <AlertStyled data-testid={'alert-' + type} type={type}>
-      <StyledClose onClick={handleCloseCallback}>&times;</StyledClose>
+      <StyledClose data-testid={'alert-close'} onClick={handleCloseCallback}>
+        &times;
+      </StyledClose>
       {children}
     </AlertStyled>
   );

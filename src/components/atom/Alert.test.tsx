@@ -1,9 +1,7 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { Alert, Text } from '..';
-import { StatusMessages } from '../../types/utils';
-import '@testing-library/jest-dom/extend-expect';
 
-const setStatus = (status: StatusMessages) => console.log(status);
+const setStatus = jest.fn();
 
 test('alert warning renders', () => {
   const { getByTestId } = render(
@@ -39,4 +37,14 @@ test('alert doesnt render', () => {
     </Alert>
   );
   expect(queryAllByTestId('alert')).toHaveLength(0);
+});
+
+test('alert click on close', () => {
+  const { getByTestId } = render(
+    <Alert type="success" setStatus={setStatus}>
+      <Text text={'Text Alert'} />
+    </Alert>
+  );
+  fireEvent.click(getByTestId('alert-close'));
+  expect(setStatus).toHaveBeenCalled();
 });

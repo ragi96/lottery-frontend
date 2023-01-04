@@ -1,11 +1,15 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { Navigation } from '..';
 
-function moveSlide(): void {
-  alert('called');
-}
-
 test('Slider Navigation exists', () => {
+  const moveSlide = jest.fn();
   const { getByTestId } = render(<Navigation moveSlide={moveSlide} />);
   expect(getByTestId('slider-navigation')).toBeInTheDocument();
+});
+
+test('Slider Navigation calls correct function on click', () => {
+  const moveSlide = jest.fn();
+  const { getByTestId } = render(<Navigation moveSlide={moveSlide.apply(1)} />);
+  fireEvent.click(getByTestId('slider-navigation'));
+  expect(moveSlide).toHaveBeenCalled();
 });
