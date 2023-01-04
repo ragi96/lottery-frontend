@@ -22,4 +22,5 @@ const ColorfieldStyled = styled.div.attrs(({ color }) => ({
   width: 100%;
   height: 200px;
   border-radius: 8px;
+  margin-bottom: 20px;
 `;

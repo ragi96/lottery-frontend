@@ -12,12 +12,13 @@ const Paragraph = styled.p`
   color: #fff;
   padding-bottom: 16px;
   display: inline-block;
+  margin: 0;
 
   @media (min-width: 576px) {
     font-size: 20px;
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     padding-bottom: 30px;
   }
 `;

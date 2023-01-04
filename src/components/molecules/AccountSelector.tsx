@@ -126,7 +126,7 @@ function Main(props: AccountSelectorProps) {
   return (
     <DropDownContainer data-testid={'account-selector'}>
       <DropDownHeader onClick={toggling}>
-        <ListItemIcon value={selectedAccount.key} size={24} theme={'polkadot'} />
+        <ListItemIcon value={selectedAccount.key} size={24} theme={'substrate'} />
         <HeaderSpan>{selectedAccount.name}</HeaderSpan>
       </DropDownHeader>
       {isOpen && (
